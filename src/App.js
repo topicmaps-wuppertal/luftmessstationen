@@ -15,7 +15,7 @@ import TopicMapComponent from "react-cismap/topicmaps/TopicMapComponent";
 import FeatureCollection from "react-cismap/FeatureCollection";
 import GenericInfoBoxFromFeature from "react-cismap/topicmaps/GenericInfoBoxFromFeature";
 import getGTMFeatureStyler from "react-cismap/topicmaps/generic/GTMStyler";
-
+import ContactButton from "react-cismap/ContactButton";
 const host = "https://wupp-topicmaps-data.cismet.de";
 
 const getGazData = async (setGazData) => {
@@ -43,10 +43,18 @@ function App() {
   const [gazData, setGazData] = useState([]);
   useEffect(() => {
     getGazData(setGazData);
+    document.title = "Luftmessstationenskarte Wuppertal";
   }, []);
   return (
-    <TopicMapContextProvider>
-      <TopicMapComponent gazData={gazData}></TopicMapComponent>
+    <TopicMapContextProvider appKey='LuftmessstationenWuppertal.TopicMap'>
+      <TopicMapComponent locatorControl={true} gazData={gazData}>
+        <ContactButton
+          title='Cooltip ;-)'
+          action={() => {
+            window.alert("Rückfragemöglichkeit zu den Messwerten");
+          }}
+        />
+      </TopicMapComponent>
     </TopicMapContextProvider>
   );
 }
