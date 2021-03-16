@@ -15,6 +15,9 @@ import getGTMFeatureStyler from "react-cismap/topicmaps/generic/GTMStyler";
 import ContactButton from "react-cismap/ContactButton";
 import { getGazData, convertItemToFeature, LogSelection, getUWZ } from "./helper";
 import { getClusterIconCreatorFunction } from "react-cismap/tools/uiHelper";
+
+import Icon from "react-cismap/commons/Icon";
+
 import UWZ from "./Umweltzonenlayer";
 function App() {
   const [gazData, setGazData] = useState([]);
@@ -44,6 +47,7 @@ function App() {
       <TopicMapComponent
         locatorControl={true}
         gazData={gazData}
+        gazetteerSearchPlaceholder='Stadtteil | Adresse | POI'
         infoBox={
           <GenericInfoBoxFromFeature
             pixelwidth={350}
