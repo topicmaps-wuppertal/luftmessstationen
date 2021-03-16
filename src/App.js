@@ -13,11 +13,12 @@ import GenericInfoBoxFromFeature from "react-cismap/topicmaps/GenericInfoBoxFrom
 
 import getGTMFeatureStyler from "react-cismap/topicmaps/generic/GTMStyler";
 import ContactButton from "react-cismap/ContactButton";
-import { getGazData, convertItemToFeature, LogSelection } from "./helper";
+import { getGazData, convertItemToFeature, LogSelection, getUWZ } from "./helper";
 import { getClusterIconCreatorFunction } from "react-cismap/tools/uiHelper";
-
+import UWZ from "./Umweltzonenlayer";
 function App() {
   const [gazData, setGazData] = useState([]);
+
   useEffect(() => {
     getGazData(setGazData);
     document.title = "Luftmessstationenskarte Wuppertal";
@@ -31,6 +32,13 @@ function App() {
       convertItemToFeature={convertItemToFeature}
       clusteringOptions={{
         iconCreateFunction: getClusterIconCreatorFunction(30, (props) => props.color),
+      }}
+      additionalLayerConfiguration={{
+        uwz: {
+          title: "Umweltzone",
+          initialActive: true,
+          layer: <UWZ />,
+        },
       }}
     >
       <TopicMapComponent

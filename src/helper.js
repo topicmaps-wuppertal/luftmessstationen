@@ -1,5 +1,5 @@
 import { addSVGToProps } from "react-cismap/tools/svgHelper";
-import { md5FetchText, fetchJSON } from "react-cismap/tools/fetching";
+import { md5FetchText, fetchJSON, md5FetchJSON } from "react-cismap/tools/fetching";
 import { getGazDataForTopicIds } from "react-cismap/tools/gazetteerHelper";
 import { useContext } from "react";
 import { FeatureCollectionContext } from "react-cismap/contexts/FeatureCollectionContextProvider";
@@ -50,8 +50,13 @@ const MONTHS = [
   "Dezember",
 ];
 
+export const getUWZ = async (setUWZ) => {
+  const uwz = await md5FetchJSON("MapData", host + "/data/umweltzonen.json");
+  setUWZ(uwz);
+};
+
 export const getGazData = async (setGazData) => {
-  const prefix = "GazDataForStories";
+  const prefix = "GazData";
   const sources = {};
 
   sources.adressen = await md5FetchText(prefix, host + "/data/adressen.json");
