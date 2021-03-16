@@ -54,9 +54,32 @@ function App() {
         }
       >
         <ContactButton
-          title='Cooltip ;-)'
+          title='Rückfrage zu den Messwerten'
           action={() => {
-            window.alert("Rückfragemöglichkeit zu den Messwerten");
+            let link = document.createElement("a");
+            link.setAttribute("type", "hidden");
+            const br = "\n";
+
+            let mailToHref =
+              "mailto:luftreinhaltung@stadt.wuppertal.de?subject=Rückfrage zu Messwerten&body=" +
+              encodeURI(`Sehr geehrte Damen und Herren,${br}${br} zu der Luftmessstationskarte `) +
+              encodeURI(`auf${br}${br}`) +
+              `${window.location.href.replace(/&/g, "%26").replace(/#/g, "%23")}` +
+              encodeURI(
+                `${br}` +
+                  `${br}` +
+                  `habe ich folgende Frage:${br}` +
+                  `${br}${br}${br}${br}` +
+                  `Mit freundlichen Grüßen${br}` +
+                  `${br}` +
+                  `${br}`
+              );
+            document.body.appendChild(link);
+            //link.href = downloadOptions.url;
+            link.href = mailToHref;
+            //link.download = downloadOptions.file;
+            //link.target = "_blank";
+            link.click();
           }}
         />
         <FeatureCollection></FeatureCollection>

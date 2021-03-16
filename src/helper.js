@@ -200,7 +200,7 @@ const getTitle = (item) => {
 
     return `Diese Messstation ist seit ${
       MONTHS[demontage.getMonth() - 1]
-    } ${demontage.getFullYear()} abmontiert`;
+    } ${demontage.getFullYear()} abmontiert.`;
   } else {
     if (lm) {
       if (lm.value !== 9999) {
