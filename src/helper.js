@@ -232,7 +232,12 @@ export const convertItemToFeature = async (itemIn) => {
 
   let item = await addSVGToProps(itemIn, (i) => "luft/" + getSignature(i));
   item.status = getStatus(item);
-  const text = item?.name || "Kein Namexx";
+  const text =
+    item?.strasse +
+    " " +
+    (item?.hausnummer || "") +
+    (item?.zusatzinfo !== undefined ? " (" + item?.zusatzinfo + ")" : "");
+
   const type = "Feature";
   const selected = false;
   const geometry = item?.geojson;
