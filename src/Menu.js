@@ -64,6 +64,7 @@ const MyMenu = () => {
             title: "nur unaufffällige Stationen",
             color: LOOKUP.unauffaellig.color,
             icon: "square",
+            iconPos: "pre",
           },
           {
             key: "auffaellig",
@@ -71,6 +72,7 @@ const MyMenu = () => {
             title: "nur auffällige Stationen",
             color: LOOKUP.auffaellig.color,
             icon: "square",
+            iconPos: "pre",
           },
           {
             key: "warnend",
@@ -78,6 +80,7 @@ const MyMenu = () => {
             title: "nur warnende Stationen",
             color: LOOKUP.warnend.color,
             icon: "square",
+            iconPos: "pre",
           },
           {
             key: "inaktiv",
@@ -85,6 +88,7 @@ const MyMenu = () => {
             title: "nur Stationen mit Messausfall",
             color: LOOKUP.inaktiv.color,
             icon: "square",
+            iconPos: "pre",
           },
         ],
         setAll: () => {
@@ -105,6 +109,7 @@ const MyMenu = () => {
             title: "inaktive Stationen",
             color: LOOKUP.inaktiv.color,
             icon: "square",
+            iconPos: "pre",
           },
         ],
         setAll: () => {
