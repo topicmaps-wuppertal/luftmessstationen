@@ -63,24 +63,28 @@ const MyMenu = () => {
             indent: 30,
             title: "nur unaufffällige Stationen",
             color: LOOKUP.unauffaellig.color,
+            icon: "square",
           },
           {
             key: "auffaellig",
             indent: 30,
             title: "nur auffällige Stationen",
             color: LOOKUP.auffaellig.color,
+            icon: "square",
           },
           {
             key: "warnend",
             indent: 30,
             title: "nur warnende Stationen",
             color: LOOKUP.warnend.color,
+            icon: "square",
           },
           {
             key: "inaktiv",
             indent: 30,
             title: "nur Stationen mit Messausfall",
             color: LOOKUP.inaktiv.color,
+            icon: "square",
           },
         ],
         setAll: () => {
@@ -95,7 +99,14 @@ const MyMenu = () => {
         title: "inaktive Messstationen",
         key: "stations",
         type: "checkBoxes",
-        values: [{ key: "abgebaut", title: "inaktive Stationen", color: LOOKUP.inaktiv.color }],
+        values: [
+          {
+            key: "abgebaut",
+            title: "inaktive Stationen",
+            color: LOOKUP.inaktiv.color,
+            icon: "square",
+          },
+        ],
         setAll: () => {
           setFilterState({ ...filterState, kategorien });
         },
