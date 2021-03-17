@@ -4,7 +4,7 @@
 
 ## Screenshot
 
-<img width="1549" alt="Screenshot 2021-02-19 at 08 40 49" src="https://user-images.githubusercontent.com/837211/108474812-2b2a9480-7290-11eb-967a-b174a73e9707.png">
+<img width="1010" alt="Screenshot 2021-03-17 at 08 44 38" src="https://user-images.githubusercontent.com/837211/111432214-0691d300-86fd-11eb-9bfa-d5c8a34b0fda.png">
 
 ## Datengrundlage
 

@@ -10,27 +10,32 @@ export const LOOKUP = {
   abgebaut: {
     color: "#9DBCCC",
     signature: "Luft_Icon_Messstation_abgebaut_farbig.svg",
-    header: "Messstation für NO² (inaktiv, demontiert)",
+    header: "Messstation für NO₂ (inaktiv, demontiert)",
+    title: "abgebaut",
   },
   inaktiv: {
-    color: "#4AFAFC5",
+    color: "#4FAFC5",
     signature: "Luft_Icon_Messstation_deaktiv_farbig.svg",
-    header: "Messstation für NO² (aktiv, aktuell Messausfall)",
+    header: "Messstation für NO₂ (aktiv, aktuell Messausfall)",
+    title: "inaktiv",
   },
   unauffaellig: {
     color: "#9ACD32",
     signature: "Luft_Icon_Messstation_unauffaellig_farbig.svg",
-    header: "Messstation für NO² (aktiv, unauffällig)",
+    header: "Messstation für NO₂ (aktiv, unauffällig)",
+    title: "unauffällig",
   },
   auffaellig: {
     color: "#FFA500",
     signature: "Luft_Icon_Messstation_auffaellig_farbig.svg",
-    header: "Messstation für NO² (aktiv, auffällig)",
+    header: "Messstation für NO₂ (aktiv, auffällig)",
+    title: "auffällig",
   },
   warnend: {
     color: "#E01414",
     signature: "Luft_Icon_Messstation_warnend_farbig.svg",
-    header: "Messstation für NO² (aktiv, warnend)",
+    header: "Messstation für NO₂ (aktiv, warnend)",
+    title: "warnend",
   },
   unknown: { color: "#eeeeee", signature: "Platz.svg", header: "Fehler" },
 };
@@ -144,10 +149,9 @@ const getActivityStatus = (item) => {
 // unauffällig 1-35 (einschließlich) µg/m³ Grün
 // auffällig 36-40 (einschließlich) µg/m³ Orange
 // warnend >40 µg/m³ Rot
-const getStatus = (item) => {
+export const getStatus = (item) => {
   if (getActivityStatus(item) === "aktiv") {
     const lym = getLastMeasurement(item)?.value;
-    console.log("lym", lym);
 
     if (lym > 0 && lym <= 35) {
       return "unauffaellig";
@@ -193,7 +197,6 @@ const getAdditionalInfo = (item) => {
       ret = ret + "\n" + lastYearM1Average + " µg/m³ (" + lastYearM1 + ")";
     }
   }
-  console.log("ret", ret);
 
   return ret;
 };
@@ -203,7 +206,6 @@ const getTitle = (item) => {
 
   if (item?.bis) {
     const demontage = new Date(item?.bis);
-    console.log("demontiert", demontage.getMonth(), demontage.getFullYear());
 
     return `Diese Messstation ist seit ${
       MONTHS[demontage.getMonth() - 1]
@@ -266,5 +268,11 @@ export const convertItemToFeature = async (itemIn) => {
       },
     },
     properties: item,
+  };
+};
+
+export const itemFilterFunction = ({ filterState }) => {
+  return (item) => {
+    return filterState?.stations?.includes(getStatus(item));
   };
 };

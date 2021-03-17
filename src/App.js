@@ -13,9 +13,16 @@ import GenericInfoBoxFromFeature from "react-cismap/topicmaps/GenericInfoBoxFrom
 
 import getGTMFeatureStyler from "react-cismap/topicmaps/generic/GTMStyler";
 import ContactButton from "react-cismap/ContactButton";
-import { getGazData, convertItemToFeature, LogSelection, getUWZ } from "./helper";
+import {
+  getGazData,
+  convertItemToFeature,
+  LogSelection,
+  itemFilterFunction,
+  getStatus,
+  LOOKUP,
+} from "./helper";
 import { getClusterIconCreatorFunction } from "react-cismap/tools/uiHelper";
-
+import MyMenu from "./Menu";
 import Icon from "react-cismap/commons/Icon";
 
 import UWZ from "./Umweltzonenlayer";
@@ -43,10 +50,17 @@ function App() {
           layer: <UWZ />,
         },
       }}
+      filterState={{
+        stations: ["alle_aktiven", "unauffaellig", "auffaellig", "warnend", "inaktiv", "abgebaut"],
+      }}
+      itemFilterFunction={itemFilterFunction}
+      classKeyFunction={(item) => LOOKUP[getStatus(item)].title}
+      getColorFromProperties={(item) => LOOKUP[getStatus(item)].color}
     >
       <TopicMapComponent
         locatorControl={true}
         gazData={gazData}
+        modalMenu={<MyMenu />}
         gazetteerSearchPlaceholder='Stadtteil | Adresse | POI'
         infoBox={
           <GenericInfoBoxFromFeature
