@@ -67,11 +67,11 @@ export const getGazData = async (setGazData) => {
   sources.no2 = await md5FetchText(prefix, host + "/data/no2.json");
 
   const gazData = getGazDataForTopicIds(sources, [
+    "no2",
     "pois",
     "kitas",
     "bezirke",
     "quartiere",
-    "no2",
     "adressen",
   ]);
 
