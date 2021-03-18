@@ -1,4 +1,4 @@
-import { getStatus } from "./luftmessstationen";
+import { getStatus } from "./convertItemToFeature";
 
 const itemFilterFunction = ({ filterState }) => {
   return (item) => {

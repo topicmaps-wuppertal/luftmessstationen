@@ -13,7 +13,7 @@ import GenericInfoBoxFromFeature from "react-cismap/topicmaps/GenericInfoBoxFrom
 
 import getGTMFeatureStyler from "react-cismap/topicmaps/generic/GTMStyler";
 import ContactButton from "react-cismap/ContactButton";
-import convertItemToFeature, { getStatus } from "./helper/luftmessstationen";
+import convertItemToFeature, { getStatus } from "./helper/convertItemToFeature";
 
 import { getClusterIconCreatorFunction } from "react-cismap/tools/uiHelper";
 import MyMenu from "./Menu";
@@ -23,6 +23,7 @@ import itemFilterFunction from "./helper/filterFunction";
 import { LOOKUP } from "./helper/constants";
 import { getGazData } from "./helper/getGazData";
 import titleFactory from "./helper/titleFactory";
+import InfoPanel from "./SecondaryInfo";
 
 function App() {
   const [gazData, setGazData] = useState([]);
@@ -65,6 +66,8 @@ function App() {
           <GenericInfoBoxFromFeature
             pixelwidth={350}
             config={{
+              displaySecondaryInfoAction: true,
+
               city: "Wuppertal",
               navigator: {
                 noun: {
@@ -77,6 +80,7 @@ function App() {
             }}
           />
         }
+        secondaryInfo={<InfoPanel />}
       >
         <ContactButton
           title='Rückfrage zu den Messwerten'

@@ -38,14 +38,14 @@ const getLastYearM1 = (item) => {
   }
 };
 
-const getLastYearMeasurements = (item) => {
+export const getLastYearMeasurements = (item) => {
   const ly = getLastYear(item);
   const values = item?.werte;
   if (ly) {
     return { values: values[ly], year: ly };
   }
 };
-const getLastYearMinus1Measurements = (item) => {
+export const getLastYearMinus1Measurements = (item) => {
   const lym1 = getLastYearM1(item);
   const values = item?.werte;
   if (lym1) {
