@@ -29,7 +29,7 @@ function App() {
 
   useEffect(() => {
     getGazData(setGazData);
-    document.title = "Luftmessstationenkarte Wuppertal";
+    document.title = "Luftmessstationskarte Wuppertal";
   }, []);
   return (
     <TopicMapContextProvider
