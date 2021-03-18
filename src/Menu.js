@@ -61,7 +61,7 @@ const MyMenu = () => {
           {
             key: "unauffaellig",
             indent: 30,
-            title: "nur unaufffällige Stationen",
+            title: "nur unauffällige Stationen",
             color: LOOKUP.unauffaellig.color,
             icon: "square",
             iconPos: "pre",
