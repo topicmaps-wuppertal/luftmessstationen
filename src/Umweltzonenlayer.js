@@ -14,7 +14,6 @@ const UWZ = () => {
   const { location } = useContext(TopicMapContext);
   useEffect(() => {
     getUWZ(setUWZ);
-    document.title = "Luftmessstationenskarte Wuppertal";
   }, []);
 
   return (
