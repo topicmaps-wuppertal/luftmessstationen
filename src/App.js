@@ -13,19 +13,17 @@ import GenericInfoBoxFromFeature from "react-cismap/topicmaps/GenericInfoBoxFrom
 
 import getGTMFeatureStyler from "react-cismap/topicmaps/generic/GTMStyler";
 import ContactButton from "react-cismap/ContactButton";
-import {
-  getGazData,
-  convertItemToFeature,
-  LogSelection,
-  itemFilterFunction,
-  getStatus,
-  LOOKUP,
-} from "./helper";
+import convertItemToFeature, { getStatus } from "./helper/luftmessstationen";
+
 import { getClusterIconCreatorFunction } from "react-cismap/tools/uiHelper";
 import MyMenu from "./Menu";
-import Icon from "react-cismap/commons/Icon";
-
+import LogSelection from "./helper/LogSelectedFeature";
 import UWZ from "./Umweltzonenlayer";
+import itemFilterFunction from "./helper/filterFunction";
+import { LOOKUP } from "./helper/constants";
+import { getGazData } from "./helper/getGazData";
+import titleFactory from "./helper/titleFactory";
+
 function App() {
   const [gazData, setGazData] = useState([]);
 
@@ -51,8 +49,9 @@ function App() {
         },
       }}
       filterState={{
-        stations: ["alle_aktiven", "unauffaellig", "auffaellig", "warnend", "inaktiv", "abgebaut"],
+        stations: ["unauffaellig", "auffaellig", "warnend", "inaktiv", "abgebaut"],
       }}
+      titleFactory={titleFactory}
       itemFilterFunction={itemFilterFunction}
       classKeyFunction={(item) => LOOKUP[getStatus(item)].title}
       getColorFromProperties={(item) => LOOKUP[getStatus(item)].color}

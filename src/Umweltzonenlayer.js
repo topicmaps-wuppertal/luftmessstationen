@@ -1,7 +1,13 @@
 import { FeatureCollectionDisplayWithTooltipLabels } from "react-cismap";
 import { useEffect, useContext, useState } from "react";
-import { getUWZ } from "./helper";
 import { TopicMapContext } from "react-cismap/contexts/TopicMapContextProvider";
+import { md5FetchJSON } from "react-cismap/tools/fetching";
+import { host } from "./helper/constants";
+
+const getUWZ = async (setUWZ) => {
+  const uwz = await md5FetchJSON("MapData", host + "/data/umweltzonen.json");
+  setUWZ(uwz);
+};
 
 const UWZ = () => {
   const [uwz, setUWZ] = useState([]);

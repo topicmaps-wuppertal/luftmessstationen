@@ -11,7 +11,7 @@ import Section from "react-cismap/topicmaps/menu/Section";
 import FilterPanel from "react-cismap/topicmaps/menu/FilterPanel";
 import DefaultSettingsPanel from "react-cismap/topicmaps/menu/DefaultSettingsPanel";
 import ConfigurableDocBlocks from "react-cismap/topicmaps/ConfigurableDocBlocks";
-import { LOOKUP } from "./helper";
+import { LOOKUP } from "./helper/constants";
 const MyMenu = () => {
   const { setAppMenuActiveMenuSection } = useContext(UIDispatchContext);
   const { filterState, filterMode, filteredItems, shownFeatures } = useContext(

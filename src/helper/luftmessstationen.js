@@ -1,87 +1,8 @@
 import { addSVGToProps } from "react-cismap/tools/svgHelper";
-import { md5FetchText, fetchJSON, md5FetchJSON } from "react-cismap/tools/fetching";
-import { getGazDataForTopicIds } from "react-cismap/tools/gazetteerHelper";
+
 import { useContext } from "react";
 import { FeatureCollectionContext } from "react-cismap/contexts/FeatureCollectionContextProvider";
-
-const host = "https://wupp-topicmaps-data.cismet.de";
-
-export const LOOKUP = {
-  abgebaut: {
-    color: "#9DBCCC",
-    signature: "Luft_Icon_Messstation_abgebaut_farbig.svg",
-    header: "Messstation für NO₂ (inaktiv, demontiert)",
-    title: "abgebaut",
-  },
-  inaktiv: {
-    color: "#4FAFC5",
-    signature: "Luft_Icon_Messstation_deaktiv_farbig.svg",
-    header: "Messstation für NO₂ (aktiv, aktuell Messausfall)",
-    title: "inaktiv",
-  },
-  unauffaellig: {
-    color: "#9ACD32",
-    signature: "Luft_Icon_Messstation_unauffaellig_farbig.svg",
-    header: "Messstation für NO₂ (aktiv, unauffällig)",
-    title: "unauffällig",
-  },
-  auffaellig: {
-    color: "#FFA500",
-    signature: "Luft_Icon_Messstation_auffaellig_farbig.svg",
-    header: "Messstation für NO₂ (aktiv, auffällig)",
-    title: "auffällig",
-  },
-  warnend: {
-    color: "#E01414",
-    signature: "Luft_Icon_Messstation_warnend_farbig.svg",
-    header: "Messstation für NO₂ (aktiv, warnend)",
-    title: "warnend",
-  },
-  unknown: { color: "#eeeeee", signature: "Platz.svg", header: "Fehler" },
-};
-
-const MONTHS = [
-  "Januar",
-  "Februar",
-  "März",
-  "April",
-  "Mai",
-  "Juni",
-  "Juli",
-  "August",
-  "September",
-  "Oktober",
-  "November",
-  "Dezember",
-];
-
-export const getUWZ = async (setUWZ) => {
-  const uwz = await md5FetchJSON("MapData", host + "/data/umweltzonen.json");
-  setUWZ(uwz);
-};
-
-export const getGazData = async (setGazData) => {
-  const prefix = "GazData";
-  const sources = {};
-
-  sources.adressen = await md5FetchText(prefix, host + "/data/adressen.json");
-  sources.bezirke = await md5FetchText(prefix, host + "/data/bezirke.json");
-  sources.quartiere = await md5FetchText(prefix, host + "/data/quartiere.json");
-  sources.pois = await md5FetchText(prefix, host + "/data/pois.json");
-  sources.kitas = await md5FetchText(prefix, host + "/data/kitas.json");
-  sources.no2 = await md5FetchText(prefix, host + "/data/no2.json");
-
-  const gazData = getGazDataForTopicIds(sources, [
-    "no2",
-    "pois",
-    "kitas",
-    "bezirke",
-    "quartiere",
-    "adressen",
-  ]);
-
-  setGazData(gazData);
-};
+import { LOOKUP, MONTHS } from "./constants";
 
 const hasValues = (item) => {
   const values = item?.werte;
@@ -174,13 +95,6 @@ const getSignature = (item) => {
   return LOOKUP[status].signature;
 };
 
-export const LogSelection = () => {
-  const { selectedFeature } = useContext(FeatureCollectionContext);
-  console.log("selectedFeature.properties", selectedFeature?.properties);
-
-  return <div></div>;
-};
-
 const getAdditionalInfo = (item) => {
   const lastYearAverage = getWeightedAverage(getLastYearMeasurements(item)?.values);
   const lastYear = getLastYear(item);
@@ -229,7 +143,7 @@ const getTitle = (item) => {
   }
 };
 
-export const convertItemToFeature = async (itemIn) => {
+const convertItemToFeature = async (itemIn) => {
   //   console.log("itemIn", itemIn);
 
   let item = await addSVGToProps(itemIn, (i) => "luft/" + getSignature(i));
@@ -270,9 +184,4 @@ export const convertItemToFeature = async (itemIn) => {
     properties: item,
   };
 };
-
-export const itemFilterFunction = ({ filterState }) => {
-  return (item) => {
-    return filterState?.stations?.includes(getStatus(item));
-  };
-};
+export default convertItemToFeature;
