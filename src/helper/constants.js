@@ -40,16 +40,16 @@ export const LOOKUP = {
 };
 
 export const MONTHS = [
-  "Januar",
-  "Februar",
-  "März",
-  "April",
-  "Mai",
-  "Juni",
-  "Juli",
-  "August",
-  "September",
-  "Oktober",
-  "November",
-  "Dezember",
+  { name: "Januar", shortname: "Jan." },
+  { name: "Februar", shortname: "Feb." },
+  { name: "März", shortname: "Mär." },
+  { name: "April", shortname: "Apr." },
+  { name: "Mai", shortname: "Mai." },
+  { name: "Juni", shortname: "Jun." },
+  { name: "Juli", shortname: "Jul." },
+  { name: "August", shortname: "Aug." },
+  { name: "September", shortname: "Sep." },
+  { name: "Oktober", shortname: "Okt." },
+  { name: "November", shortname: "Nov." },
+  { name: "Dezember", shortname: "Dez." },
 ];

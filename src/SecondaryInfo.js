@@ -5,10 +5,12 @@ import SecondaryInfo from "react-cismap/topicmaps/SecondaryInfo";
 import {
   getLastYearMeasurements,
   getLastYearMinus1Measurements,
+  getStatus4Value,
 } from "./helper/convertItemToFeature";
 import Chart from "chart.js";
-import ReactChartkick, { LineChart } from "react-chartkick";
-import { MONTHS } from "./helper/constants";
+import ReactChartkick, { LineChart, BarChart, ColumnChart, ScatterChart } from "react-chartkick";
+import { LOOKUP, MONTHS } from "./helper/constants";
+import Color from "color";
 ReactChartkick.addAdapter(Chart);
 
 const InfoPanel = () => {
@@ -28,8 +30,10 @@ const InfoPanel = () => {
     let valueCounter = 0;
     let outageCounter = 0;
     const avgs = {};
-    const last12LineChartData = [];
-    const avgsLineChartData = [];
+    const last12ChartData = [];
+
+    const last12Colors = [];
+    const avgsChartData = [];
 
     for (const year of Object.keys(station.werte)) {
       const yearValues = station.werte[year];
@@ -95,16 +99,23 @@ const InfoPanel = () => {
       // ---create the chart objects
 
       for (const entry of last12) {
-        const key = MONTHS[entry.index] + entry.year;
+        const key = entry.year + " " + MONTHS[entry.index].shortname;
+        console.log("xxx key", key);
+
         if (entry.value !== -9999) {
-          last12LineChartData.push([key, entry.value]);
+          last12ChartData.push([key, entry.value]);
+          last12Colors.push(new Color(LOOKUP[getStatus4Value(entry.value)].color).fade(0.5));
+        } else {
+          last12ChartData.push([key, null]);
+          last12Colors.push(null);
         }
       }
 
       for (const year of Object.keys(avgs)) {
-        avgsLineChartData.push([year, avgs[year]]);
+        avgsChartData.push([year, avgs[year]]);
       }
     }
+    console.log("xxx last12Coloe", last12Colors);
 
     const subSections = [
       <SecondaryInfoPanelSection
@@ -113,7 +124,45 @@ const InfoPanel = () => {
         header={"NO₂-Messwerte der letzten 12 Monate"}
       >
         <div style={{ fontSize: "115%", padding: "10px", paddingTop: "0px" }}>
-          <LineChart data={last12LineChartData} />
+          <LineChart
+            data={[
+              {
+                name: "NO₂-Messwerte der letzten 12 Monate",
+                data: last12ChartData,
+                library: { lineTension: 0 },
+              },
+            ]}
+          />
+          <LineChart
+            data={[
+              {
+                name: "NO₂-Messwerte der letzten 12 Monate",
+                data: last12ChartData,
+                library: { steppedLine: "middle" },
+              },
+            ]}
+          />{" "}
+          <LineChart
+            data={[
+              {
+                data: last12ChartData,
+                library: { cubicInterpolationMode: "yes" },
+              },
+            ]}
+          />
+          <ColumnChart
+            data={[
+              {
+                data: last12ChartData,
+                library: {
+                  backgroundColor: last12Colors,
+                  borderColor: last12Colors,
+                  hoverBackgroundColor: last12Colors,
+                  hoverBorderColor: last12Colors,
+                },
+              },
+            ]}
+          />
           {/* <pre>{JSON.stringify(last12LineChartData, null, 2)}</pre> */}
         </div>
       </SecondaryInfoPanelSection>,
@@ -123,7 +172,7 @@ const InfoPanel = () => {
         header={"NO₂-Jahresmittelwerte der letzten zehn Kalenderjahre"}
       >
         <div style={{ fontSize: "115%", padding: "10px", paddingTop: "0px" }}>
-          <LineChart data={avgsLineChartData} />
+          <LineChart data={avgsChartData} />
 
           {/* <pre>{JSON.stringify(avgs, null, 2)}</pre> */}
         </div>
@@ -134,7 +183,7 @@ const InfoPanel = () => {
         header={"NO₂-Messwerte der letzten 12 Monate"}
       >
         <div style={{ fontSize: "115%", padding: "10px", paddingTop: "0px" }}>
-          <pre>{JSON.stringify(last12LineChartData, null, 2)}</pre>
+          <pre>{JSON.stringify(last12ChartData, null, 2)}</pre>
         </div>
       </SecondaryInfoPanelSection>,
       <SecondaryInfoPanelSection
@@ -196,9 +245,7 @@ const InfoPanel = () => {
                   Diese Messstation generierte an {outageCounter}{" "}
                   {outageCounter === 1 ? "Monat" : "Monaten"} einen Messausfall. Damit besitzt sie
                   eine Zuverlässigkeit von{" "}
-                  {Math.round(
-                    ((valueCounter - outageCounter) / (valueCounter + outageCounter)) * 1000
-                  ) / 10}
+                  {Math.round((valueCounter / (valueCounter + outageCounter)) * 1000) / 10}
                   %.
                 </p>
               )}

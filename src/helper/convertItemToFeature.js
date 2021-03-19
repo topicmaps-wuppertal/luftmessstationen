@@ -74,19 +74,23 @@ export const getStatus = (item) => {
   if (getActivityStatus(item) === "aktiv") {
     const lym = getLastMeasurement(item)?.value;
 
-    if (lym > 0 && lym <= 35) {
-      return "unauffaellig";
-    } else if (lym > 35 && lym <= 40) {
-      return "auffaellig";
-    } else if (lym > 40) {
-      return "warnend";
-    } else if (lym === 9999) {
-      return "inaktiv";
-    } else {
-      return "unknown";
-    }
+    return getStatus4Value(lym);
   } else {
     return getActivityStatus(item);
+  }
+};
+
+export const getStatus4Value = (value) => {
+  if (value > 0 && value <= 35) {
+    return "unauffaellig";
+  } else if (value > 35 && value <= 40) {
+    return "auffaellig";
+  } else if (value > 40) {
+    return "warnend";
+  } else if (value === 9999) {
+    return "inaktiv";
+  } else {
+    return "unknown";
   }
 };
 
@@ -122,16 +126,16 @@ const getTitle = (item) => {
     const demontage = new Date(item?.bis);
 
     return `Diese Messstation ist seit ${
-      MONTHS[demontage.getMonth() - 1]
+      MONTHS[demontage.getMonth() - 1].name
     } ${demontage.getFullYear()} abmontiert.`;
   } else {
     if (lm) {
       if (lm.value !== 9999) {
-        return lm.value + " µg/m³ (" + MONTHS[lm.monthIndex] + " " + lm.year + ")";
+        return lm.value + " µg/m³ (" + MONTHS[lm.monthIndex].name + " " + lm.year + ")";
       } else {
         return (
           "Für " +
-          MONTHS[lm.monthIndex] +
+          MONTHS[lm.monthIndex].name +
           " " +
           lm.year +
           "liefert diese Messstation keinen Messwert"
