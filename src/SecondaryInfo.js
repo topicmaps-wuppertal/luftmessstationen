@@ -6,6 +6,10 @@ import {
   getLastYearMeasurements,
   getLastYearMinus1Measurements,
 } from "./helper/convertItemToFeature";
+import Chart from "chart.js";
+import ReactChartkick, { LineChart } from "react-chartkick";
+import { MONTHS } from "./helper/constants";
+ReactChartkick.addAdapter(Chart);
 
 const InfoPanel = () => {
   const { selectedFeature, items } = useContext(FeatureCollectionContext);
@@ -24,6 +28,9 @@ const InfoPanel = () => {
     let valueCounter = 0;
     let outageCounter = 0;
     const avgs = {};
+    const last12LineChartData = [];
+    const avgsLineChartData = [];
+
     for (const year of Object.keys(station.werte)) {
       const yearValues = station.werte[year];
       for (let i = 0; i < Math.min(yearValues.length, 12); ++i) {
@@ -84,7 +91,21 @@ const InfoPanel = () => {
           deleteCounter++;
         }
       }
+
+      // ---create the chart objects
+
+      for (const entry of last12) {
+        const key = MONTHS[entry.index] + entry.year;
+        if (entry.value !== -9999) {
+          last12LineChartData.push([key, entry.value]);
+        }
+      }
+
+      for (const year of Object.keys(avgs)) {
+        avgsLineChartData.push([year, avgs[year]]);
+      }
     }
+
     const subSections = [
       <SecondaryInfoPanelSection
         key='last12'
@@ -92,12 +113,33 @@ const InfoPanel = () => {
         header={"NO₂-Messwerte der letzten 12 Monate"}
       >
         <div style={{ fontSize: "115%", padding: "10px", paddingTop: "0px" }}>
-          <pre>{JSON.stringify(last12, null, 2)}</pre>
+          <LineChart data={last12LineChartData} />
+          {/* <pre>{JSON.stringify(last12LineChartData, null, 2)}</pre> */}
         </div>
       </SecondaryInfoPanelSection>,
       <SecondaryInfoPanelSection
         key='average10'
         bsStyle='warning'
+        header={"NO₂-Jahresmittelwerte der letzten zehn Kalenderjahre"}
+      >
+        <div style={{ fontSize: "115%", padding: "10px", paddingTop: "0px" }}>
+          <LineChart data={avgsLineChartData} />
+
+          {/* <pre>{JSON.stringify(avgs, null, 2)}</pre> */}
+        </div>
+      </SecondaryInfoPanelSection>,
+      <SecondaryInfoPanelSection
+        key='last12'
+        bsStyle='default'
+        header={"NO₂-Messwerte der letzten 12 Monate"}
+      >
+        <div style={{ fontSize: "115%", padding: "10px", paddingTop: "0px" }}>
+          <pre>{JSON.stringify(last12LineChartData, null, 2)}</pre>
+        </div>
+      </SecondaryInfoPanelSection>,
+      <SecondaryInfoPanelSection
+        key='average10'
+        bsStyle='default'
         header={"NO₂-Jahresmittelwerte der letzten zehn Kalenderjahre"}
       >
         <div style={{ fontSize: "115%", padding: "10px", paddingTop: "0px" }}>
