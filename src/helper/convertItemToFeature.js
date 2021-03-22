@@ -80,12 +80,26 @@ export const getStatus = (item) => {
   }
 };
 
+// export const getStatus4Value = (value) => {
+//   if (value > 0 && value <= 35) {
+//     return "unauffaellig";
+//   } else if (value > 35 && value <= 40) {
+//     return "auffaellig";
+//   } else if (value > 40) {
+//     return "warnend";
+//   } else if (value === 9999) {
+//     return "inaktiv";
+//   } else {
+//     return "unknown";
+//   }
+// };
+
 export const getStatus4Value = (value) => {
-  if (value > 0 && value <= 35) {
+  if (value > 0 && value <= 28) {
     return "unauffaellig";
-  } else if (value > 35 && value <= 40) {
+  } else if (value > 28 && value <= 33) {
     return "auffaellig";
-  } else if (value > 40) {
+  } else if (value > 33) {
     return "warnend";
   } else if (value === 9999) {
     return "inaktiv";
