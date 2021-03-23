@@ -29,7 +29,7 @@ const InfoPanel = () => {
     // --- value and outage counter and avg of the last 10 years
     let valueCounter = 0;
     let outageCounter = 0;
-    const avgs = {};
+    const avgs = JSON.parse(JSON.stringify(station?.mittelwerte));
     const last12ChartData = [];
 
     const last12Colors = [];
@@ -44,9 +44,6 @@ const InfoPanel = () => {
           valueCounter++;
         }
       }
-      if (yearValues.length === 13) {
-        avgs[year] = yearValues[12];
-      }
     }
 
     let last12;
@@ -55,16 +52,6 @@ const InfoPanel = () => {
       // --- measurements of the last 12 months
       let { values: lastYearValues, year: lastYear } = getLastYearMeasurements(station);
       let lastYearM1Values = getLastYearMinus1Measurements(station);
-
-      //remove average
-      if (lastYearValues?.length === 13) {
-        lastYearValues = [...lastYearValues]; // spread op bc original is immutable
-        lastYearValues.pop();
-      }
-      if (lastYearM1Values?.length === 13) {
-        lastYearM1Values = [...lastYearM1Values]; // spread op bc original is immutable
-        lastYearM1Values.pop();
-      }
 
       let twoYearVals = [];
       if (lastYearM1Values) {
