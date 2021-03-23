@@ -53,11 +53,6 @@ export const getLastYearMinus1Measurements = (item) => {
   }
 };
 
-const getWeightedAverage = (measurments) => {
-  if (measurments && measurments.length === 13) {
-    return measurments[12];
-  }
-};
 const getActivityStatus = (item) => {
   if (item?.bis !== undefined) {
     return "abgebaut";
@@ -114,10 +109,11 @@ const getSignature = (item) => {
 };
 
 const getAdditionalInfo = (item) => {
-  const lastYearAverage = getWeightedAverage(getLastYearMeasurements(item)?.values);
   const lastYear = getLastYear(item);
-  const lastYearM1Average = getWeightedAverage(getLastYearMinus1Measurements(item));
   const lastYearM1 = getLastYearM1(item);
+
+  const lastYearAverage = item?.mittelwerte[lastYear];
+  const lastYearM1Average = item?.mittelwerte[lastYearM1];
 
   let ret = "";
   if (lastYearAverage || lastYearM1Average) {
@@ -187,7 +183,10 @@ const convertItemToFeature = async (itemIn) => {
     ),
   };
   item.info = info;
-  item.foto = "https://www.wuppertal.de/geoportal/luftmessstationen/fotos/NO2_test.jpg";
+  if (item?.bild) {
+    item.foto = "https://www.wuppertal.de/geoportal/luftmessstationen/fotos/" + item.bild;
+  }
+
   return {
     text,
     type,

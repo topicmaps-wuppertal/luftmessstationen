@@ -36,6 +36,7 @@ function App() {
     <TopicMapContextProvider
       appKey='LuftmessstationenWuppertal.TopicMap'
       featureItemsURL={"https://wupp-topicmaps-data.cismet.de/data/no2.data.json"}
+      // featureItemsURL={"/data/no2.data.json"} //for dev purpose only
       getFeatureStyler={getGTMFeatureStyler}
       featureTooltipFunction={(feature) => feature?.text}
       convertItemToFeature={convertItemToFeature}
