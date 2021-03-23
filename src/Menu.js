@@ -175,7 +175,11 @@ const MyMenu = () => {
           sectionBsStyle='primary'
           sectionContent={<FilterPanel filterConfiguration={filterConfiguration} />}
         />,
-        <DefaultSettingsPanel key='settings' />,
+        <DefaultSettingsPanel
+          previewMapPosition='lat=51.2607860760692&lng=7.164304562911684&title&zoom=9'
+          previewMapClusteringOptions={undefined}
+          key='settings'
+        />,
         <Section
           key='help'
           sectionKey='help'
