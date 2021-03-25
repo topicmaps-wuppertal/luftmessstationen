@@ -5,8 +5,8 @@ export const LOOKUP = {
     color: "#9DBCCC",
     signature: "Luft_Icon_Messstation_abgebaut_farbig.svg",
     header: "Messstation für NO₂ (inaktiv, abmontiert)",
-    title: "abgebaut",
-    filterTitle: "abgebaute",
+    title: "abmontiert",
+    filterTitle: "abmontierte",
   },
   inaktiv: {
     color: "#4FAFC5",

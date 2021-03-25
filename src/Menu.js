@@ -106,7 +106,7 @@ const MyMenu = () => {
         values: [
           {
             key: "abgebaut",
-            title: "inaktive Stationen",
+            title: "abmontierte Stationen",
             color: LOOKUP.abgebaut.color,
             icon: "square",
             iconPos: "pre",
