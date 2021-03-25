@@ -110,17 +110,18 @@ const InfoPanel = () => {
     const legend = (
       <div style={{ fontSize: "90%", textAlign: "center" }}>
         <div>
-          <span>
-            <Icon style={{ color: LOOKUP.unauffaellig.color }} name='square' /> unauffällig
+          <span style={{ whiteSpace: "nowrap" }}>
+            <Icon style={{ color: LOOKUP.unauffaellig.color }} name='square' /> unauffällig{" "}
+            {"(≦ 35)"}
           </span>
-          <span style={{ fontSize: "90%", marginLeft: 10, marginRight: 10 }}>
-            <Icon style={{ color: LOOKUP.auffaellig.color }} name='square' /> auffällig
+          <span style={{ whiteSpace: "nowrap", marginLeft: 10, marginRight: 10 }}>
+            <Icon style={{ color: LOOKUP.auffaellig.color }} name='square' /> auffällig {"(> 35)"}
           </span>
-          <span>
-            <Icon style={{ color: LOOKUP.warnend.color }} name='square' /> warnend
+          <span style={{ whiteSpace: "nowrap" }}>
+            <Icon style={{ color: LOOKUP.warnend.color }} name='square' /> warnend {"(> 40)"}
           </span>
         </div>
-        {/* <div style={{ fontSize: "80%" }}> Messwerte in µg/m³</div> */}
+        <div style={{ fontSize: "80%" }}> Messwerte in µg/m³</div>
       </div>
     );
     if (station?.bis === undefined) {
@@ -128,7 +129,7 @@ const InfoPanel = () => {
         <SecondaryInfoPanelSection
           key='last12'
           bsStyle='info'
-          header={"NO₂-Messwerte der letzten 12 Monate in µg/m³"}
+          header={"NO₂-Messwerte der letzten 12 Monate"}
         >
           <div style={{ fontSize: "115%", padding: "10px", paddingTop: "0px" }}>
             {legend}
@@ -162,7 +163,7 @@ const InfoPanel = () => {
         <SecondaryInfoPanelSection
           key='average10'
           bsStyle='warning'
-          header={"NO₂-Jahresmittelwerte der letzten zehn Kalenderjahre in µg/m³"}
+          header={"NO₂-Jahresmittelwerte der letzten zehn Kalenderjahre"}
         >
           <div style={{ fontSize: "115%", padding: "10px", paddingTop: "0px" }}>
             {legend}
