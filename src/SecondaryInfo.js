@@ -34,7 +34,7 @@ const InfoPanel = () => {
 
     const last12Colors = [];
     const avgsChartData = [];
-
+    const avgsColors = [];
     for (const year of Object.keys(station.werte)) {
       const yearValues = station.werte[year];
       for (let i = 0; i < Math.min(yearValues.length, 12); ++i) {
@@ -74,9 +74,7 @@ const InfoPanel = () => {
       // --- avg of the last 10 years means delete the first n values
       //     where n=count of keys in werte-10
       const years = Object.keys(station.werte);
-      const firstNElementsToDestroy = years.length - 10;
       const currentYear = new Date().getFullYear();
-      console.log("xxx currentYear", currentYear);
 
       for (const year of years) {
         if (year < currentYear - 11) {
@@ -99,6 +97,11 @@ const InfoPanel = () => {
 
       for (const year of Object.keys(avgs)) {
         avgsChartData.push([year, avgs[year]]);
+        avgsColors.push(new Color(LOOKUP[getStatus4Value(avgs[year])].color).fade(0.5));
+      }
+
+      for (const year of Object.keys(avgs)) {
+        avgsChartData.push([year, avgs[year]]);
       }
     }
 
@@ -112,32 +115,6 @@ const InfoPanel = () => {
           header={"NO₂-Messwerte der letzten 12 Monate"}
         >
           <div style={{ fontSize: "115%", padding: "10px", paddingTop: "0px" }}>
-            <LineChart
-              data={[
-                {
-                  name: "NO₂-Messwerte der letzten 12 Monate",
-                  data: last12ChartData,
-                  library: { lineTension: 0 },
-                },
-              ]}
-            />
-            <LineChart
-              data={[
-                {
-                  name: "NO₂-Messwerte der letzten 12 Monate",
-                  data: last12ChartData,
-                  library: { steppedLine: "middle" },
-                },
-              ]}
-            />{" "}
-            <LineChart
-              data={[
-                {
-                  data: last12ChartData,
-                  library: { cubicInterpolationMode: "yes" },
-                },
-              ]}
-            />
             <ColumnChart
               data={[
                 {
@@ -147,16 +124,22 @@ const InfoPanel = () => {
                     borderColor: last12Colors,
                     hoverBackgroundColor: last12Colors,
                     hoverBorderColor: last12Colors,
+                    legend: {
+                      display: false,
+                      labels: {
+                        fontColor: "rgb(255, 99, 132)",
+                      },
+                    },
                   },
                 },
               ]}
             />
-            {/* <pre>{JSON.stringify(last12LineChartData, null, 2)}</pre> */}
           </div>
         </SecondaryInfoPanelSection>
       );
     }
 
+    Chart.defaults.global.legend.display = false;
     if (Object.keys(avgsChartData).length > 0) {
       subSections.push(
         <SecondaryInfoPanelSection
@@ -165,8 +148,19 @@ const InfoPanel = () => {
           header={"NO₂-Jahresmittelwerte der letzten zehn Kalenderjahre"}
         >
           <div style={{ fontSize: "115%", padding: "10px", paddingTop: "0px" }}>
-            <LineChart data={avgsChartData} />
-
+            <ColumnChart
+              data={[
+                {
+                  data: avgsChartData,
+                  library: {
+                    backgroundColor: avgsColors,
+                    borderColor: avgsColors,
+                    hoverBackgroundColor: avgsColors,
+                    hoverBorderColor: avgsColors,
+                  },
+                },
+              ]}
+            />
             {/* <pre>{JSON.stringify(avgs, null, 2)}</pre> */}
           </div>
         </SecondaryInfoPanelSection>
@@ -196,9 +190,6 @@ const InfoPanel = () => {
     //     </div>
     //   </SecondaryInfoPanelSection>
     // );
-
-    console.log("Data: NO₂-Messwerte der letzten 12 Monate", last12ChartData);
-    console.log("Data: NO₂-Jahresmittelwerte der letzten zehn Kalenderjahre", avgs);
 
     return (
       <SecondaryInfo
