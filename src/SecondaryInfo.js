@@ -220,16 +220,16 @@ const InfoPanel = () => {
                 fontSize: "115%",
                 padding: "10px",
                 paddingTop: "0px",
-                maxWidth: windowSize?.width < 500 ? windowSize?.width - 250 : undefined,
               }}
             >
-              <b>Adresse:</b>
+              <div>
+                <b>Adresse:</b>
 
-              <p>
-                {station?.strasse} {station?.hausnummer}{" "}
-                {station?.zusatzinfo && <span>({station?.zusatzinfo})</span>}
-              </p>
-
+                <p>
+                  {station?.strasse} {station?.hausnummer}{" "}
+                  {station?.zusatzinfo && <span>({station?.zusatzinfo})</span>}
+                </p>
+              </div>
               <b>Stationsaktivität:</b>
 
               {station?.bis !== undefined && (
