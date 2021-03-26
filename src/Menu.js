@@ -121,8 +121,36 @@ const MyMenu = () => {
       },
     ],
   };
-  const simpleHelp = undefined;
-
+  const simpleHelp = {
+    content: `Die Stadt Wuppertal führt seit vielen Jahren Messungen und Kartierungen durch,
+um Aufschlüsse über die Luftbelastungssituation zu erhalten. Diese Erkenntnisse werden 
+für Maßnahmen zur Luftreinhaltung und die Stadtentwicklung genutzt. Einer der derzeit 
+am meisten diskutierte Luftschadstoff ist Stickstoffdioxid (NO₂ ). Dieser wird als 
+Reizgas mit stechend-stickigem Geruch bereits in geringen Konzentrationen wahrgenommen. 
+Die Inhalation ist für den Menschen der einzig relevante Aufnahmeweg. 
+   
+Die europäische Union hat für ihre Mitgliedsstaaten mit mehreren Luftqualitätsrichtlinien
+verbindliche Luftqualitätsziele zur Vermeidung oder Verringerung schädlicher Auswirkungen
+auf die menschliche Gesundheit und die Umwelt festgelegt. Danach wird die Luftqualität 
+in den Staaten der EU nach einheitlichen Methoden und Kriterien beurteilt. In der 
+Bundesrepublik Deutschland wurden diese Richtlinien durch Novellierung des 
+Bundes-Immissions­schutzgesetzes (BImSchG) sowie durch die Einführung der 39. Verordnung 
+zum BImSchG (39. BImSchV) in deutsches Recht umgesetzt. Für Stickstoffdioxid (NO₂ ) gilt 
+seit dem Jahr 2010 ein Jahresmittelwert für NO₂  von 40 µg pro Kubikmeter Luft. Die 
+Messungen von Stickstoffdioxid (NO₂ ) werden in Wuppertal mit sogenannten Passivsammlern 
+durchgeführt und nahezu monatlich abgelesen. 
+  
+Die Luftmessstationskarte zeigt die Positionen dieser Passivsammler im Wuppertaler Stadtgebiet,
+welche in den vergangenen zehn Jahren Messwerte lieferten. Die farbigen Signaturen in der
+Karte beziehen sich dabei auf den zuletzt verfügbaren monatlichen NO₂ -Messwert: unauffällig 
+grün (≦ 35 mg/m³), auffällig gelb (> 35 µg/m³) und warnend rot (> 40 µg/m³). Die Signaturen 
+für Passivsammler, welche bei der letzten monatlichen Ablesung keinen Messwert geliefert 
+haben, sind türkis eingefärbt (temporärer Ausfall). Wenn eine Messstation in den letzten 
+zehn Jahren abgebaut wurde und damit keine weiteren NO₂ -Messwerte liefert, liegt eine 
+blaugraue Signatur vor. Die Daten zu den Messstationen und Messwerten seit dem Jahr 
+2006 sind im Open-Data-Angebot der Stadt Wuppertal als Datensatz Luftmessstationen 
+[[Link zum Open-Data-Portal](https://offenedaten-wuppertal.de/)] verfügbar.`,
+  };
   return (
     <ModalApplicationMenu
       menuIcon={"bars"}
