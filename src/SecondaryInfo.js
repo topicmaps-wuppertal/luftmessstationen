@@ -12,11 +12,12 @@ import ReactChartkick, { LineChart, BarChart, ColumnChart, ScatterChart } from "
 import { LOOKUP, MONTHS } from "./helper/constants";
 import Color from "color";
 import Icon from "react-cismap/commons/Icon";
+import { ResponsiveTopicMapContext } from "react-cismap/contexts/ResponsiveTopicMapContextProvider";
 ReactChartkick.addAdapter(Chart);
 
 const InfoPanel = () => {
   const { selectedFeature, items } = useContext(FeatureCollectionContext);
-
+  // const { windowSize } = useContext(ResponsiveTopicMapContext);
   const station = selectedFeature?.properties;
 
   if (station !== undefined) {
