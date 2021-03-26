@@ -17,7 +17,7 @@ ReactChartkick.addAdapter(Chart);
 
 const InfoPanel = () => {
   const { selectedFeature, items } = useContext(FeatureCollectionContext);
-  // const { windowSize } = useContext(ResponsiveTopicMapContext);
+  const { windowSize } = useContext(ResponsiveTopicMapContext);
   const station = selectedFeature?.properties;
 
   if (station !== undefined) {
@@ -118,6 +118,7 @@ const InfoPanel = () => {
           <span style={{ whiteSpace: "nowrap", marginLeft: 10, marginRight: 10 }}>
             <Icon style={{ color: LOOKUP.auffaellig.color }} name='square' /> auffällig {"(> 35)"}
           </span>
+          {windowSize?.width < 463 && <br />}
           <span style={{ whiteSpace: "nowrap" }}>
             <Icon style={{ color: LOOKUP.warnend.color }} name='square' /> warnend {"(> 40)"}
           </span>
