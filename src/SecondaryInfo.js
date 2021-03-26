@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import { FeatureCollectionContext } from "react-cismap/contexts/FeatureCollectionContextProvider";
 import SecondaryInfoPanelSection from "react-cismap/topicmaps/SecondaryInfoPanelSection";
 import SecondaryInfo from "react-cismap/topicmaps/SecondaryInfo";
@@ -13,6 +13,7 @@ import { LOOKUP, MONTHS } from "./helper/constants";
 import Color from "color";
 import Icon from "react-cismap/commons/Icon";
 import { ResponsiveTopicMapContext } from "react-cismap/contexts/ResponsiveTopicMapContextProvider";
+
 ReactChartkick.addAdapter(Chart);
 
 const InfoPanel = () => {
@@ -219,22 +220,37 @@ const InfoPanel = () => {
         mainSection={
           <div style={{ width: "100%", minHeight: minHeight4MainSextion }}>
             {foto !== undefined && (
-              <img
-                alt='Bild'
+              <div
                 style={{
-                  paddingLeft: 10,
-                  paddingRight: 10,
-                  float: "right",
-                  paddingBottom: "5px",
+                  textAlign: "center",
+                  float: windowSize?.width < 500 ? undefined : "right",
                 }}
-                src={foto}
-                width='250'
-              />
+              >
+                <img
+                  alt='Bild'
+                  style={{
+                    paddingLeft: 10,
+                    paddingRight: 10,
+                    horizontalAlignment: "center",
+                    paddingBottom: "5px",
+                  }}
+                  src={foto}
+                  width='250'
+                />
+              </div>
             )}
-            <div style={{ fontSize: "115%", padding: "10px", paddingTop: "0px" }}>
+            <div
+              style={{
+                fontSize: "115%",
+                padding: "10px",
+                paddingTop: "0px",
+                maxWidth: windowSize?.width < 500 ? windowSize?.width - 250 : undefined,
+              }}
+            >
               <b>Adresse:</b>
 
               <p>
+                {station?.strasse} {station?.hausnummer} {station?.strasse} {station?.hausnummer}{" "}
                 {station?.strasse} {station?.hausnummer}{" "}
                 {station?.zusatzinfo && <span>({station?.zusatzinfo})</span>}
               </p>
