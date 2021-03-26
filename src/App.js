@@ -105,10 +105,7 @@ function App() {
                   `${br}`
               );
             document.body.appendChild(link);
-            //link.href = downloadOptions.url;
             link.href = mailToHref;
-            //link.download = downloadOptions.file;
-            //link.target = "_blank";
             link.click();
           }}
         />

@@ -8,7 +8,7 @@ import {
   getStatus4Value,
 } from "./helper/convertItemToFeature";
 import Chart from "chart.js";
-import ReactChartkick, { LineChart, BarChart, ColumnChart, ScatterChart } from "react-chartkick";
+import ReactChartkick, { ColumnChart } from "react-chartkick";
 import { LOOKUP, MONTHS } from "./helper/constants";
 import Color from "color";
 import Icon from "react-cismap/commons/Icon";
@@ -188,30 +188,6 @@ const InfoPanel = () => {
         </SecondaryInfoPanelSection>
       );
     }
-
-    // subSections.push(
-    //   <SecondaryInfoPanelSection
-    //     key='last12'
-    //     bsStyle='default'
-    //     header={"Data: NO₂-Messwerte der letzten 12 Monate"}
-    //   >
-    //     <div style={{ fontSize: "115%", padding: "10px", paddingTop: "0px" }}>
-    //       <pre>{JSON.stringify(last12ChartData, null, 2)}</pre>
-    //     </div>
-    //   </SecondaryInfoPanelSection>
-    // );
-
-    // subSections.push(
-    //   <SecondaryInfoPanelSection
-    //     key='average10'
-    //     bsStyle='default'
-    //     header={"Data: NO₂-Jahresmittelwerte der letzten zehn Kalenderjahre"}
-    //   >
-    //     <div style={{ fontSize: "115%", padding: "10px", paddingTop: "0px" }}>
-    //       <pre>{JSON.stringify(avgs, null, 2)}</pre>
-    //     </div>
-    //   </SecondaryInfoPanelSection>
-    // );
 
     return (
       <SecondaryInfo
