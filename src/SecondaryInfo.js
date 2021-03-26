@@ -226,7 +226,6 @@ const InfoPanel = () => {
               <b>Adresse:</b>
 
               <p>
-                {station?.strasse} {station?.hausnummer} {station?.strasse} {station?.hausnummer}{" "}
                 {station?.strasse} {station?.hausnummer}{" "}
                 {station?.zusatzinfo && <span>({station?.zusatzinfo})</span>}
               </p>
