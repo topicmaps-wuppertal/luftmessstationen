@@ -136,7 +136,7 @@ const getTitle = (item) => {
     const demontage = new Date(item?.bis);
 
     return `Diese Messstation ist seit ${
-      MONTHS[demontage.getMonth() - 1].name
+      MONTHS[demontage.getMonth()].name
     } ${demontage.getFullYear()} abmontiert.`;
   } else {
     if (lm) {
