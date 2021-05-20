@@ -13,7 +13,7 @@ export const LOOKUP = {
     signature: "Luft_Icon_Messstation_deaktiv_farbig.svg",
     header: "Messstation für NO₂ (aktiv, aktuell Messausfall)",
     title: "inaktiv",
-    filterTitle: "inaktive",
+    filterTitle: "Messstationsausfälle",
   },
   unauffaellig: {
     color: "#9ACD32",

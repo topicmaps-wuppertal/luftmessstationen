@@ -10,7 +10,20 @@ const factory = ({ featureCollectionContext }) => {
   if (featureCollectionContext?.filteredItems?.length === featureCollectionContext?.items?.length) {
     filterDescription = undefined;
   } else {
-    const stationsArten = featureCollectionContext?.filterState?.stations;
+    const stationsArten = [...featureCollectionContext?.filterState?.stations];
+    stationsArten.sort();
+
+    stationsArten.sort((a, b) => {
+      if (a < b || a === "inaktiv") {
+        return -1;
+      }
+      if (a > b || b === "inaktiv") {
+        return 1;
+      }
+      // a muss gleich b sein
+      return 0;
+    });
+    console.log("yyy stationsArten", stationsArten);
 
     if (
       stationsArten.includes("unauffaellig") &&
@@ -19,8 +32,10 @@ const factory = ({ featureCollectionContext }) => {
       stationsArten.includes("inaktiv")
     ) {
       filterDescription = "nur aktive Messstationen";
-    } else if (stationsArten.length === 1) {
+    } else if (stationsArten.length === 1 && !stationsArten.includes("inaktiv")) {
       filterDescription = `nur ${LOOKUP[stationsArten[0]].filterTitle} Messstationen`;
+    } else if (stationsArten.length === 1) {
+      filterDescription = `nur ${LOOKUP[stationsArten[0]].filterTitle}`;
     } else {
       const parts = [];
       for (const art of stationsArten) {
