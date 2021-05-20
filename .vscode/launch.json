@@ -1,0 +1,15 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "pwa-chrome",
+      "request": "launch",
+      "name": "Gewerbeschulstraße",
+      "url": "http://localhost:3000/#/?lat=51.26848897192792&lng=7.202854981158262&zoom=14",
+      "webRoot": "${workspaceFolder}"
+    }
+  ]
+}
