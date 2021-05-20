@@ -124,7 +124,7 @@ const InfoPanel = () => {
             <Icon style={{ color: LOOKUP.warnend.color }} name='square' /> warnend {"(> 40)"}
           </span>
         </div>
-        <div style={{ fontSize: "80%" }}> Messwerte in µg/m³</div>
+        {/* <div style={{ fontSize: "80%" }}> Messwerte in µg/m³</div> */}
       </div>
     );
     if (station?.bis === undefined) {
@@ -132,7 +132,7 @@ const InfoPanel = () => {
         <SecondaryInfoPanelSection
           key='last12'
           bsStyle='info'
-          header={"NO₂-Messwerte der letzten 12 Monate"}
+          header={"NO₂-Messwerte der letzten 12 Monate in µg/m³"}
         >
           <div style={{ fontSize: "115%", padding: "10px", paddingTop: "0px" }}>
             {legend}
@@ -166,7 +166,7 @@ const InfoPanel = () => {
         <SecondaryInfoPanelSection
           key='average10'
           bsStyle='warning'
-          header={"NO₂-Jahresmittelwerte der letzten zehn Kalenderjahre"}
+          header={"NO₂-Jahresmittelwerte der letzten zehn Kalenderjahre in µg/m³"}
         >
           <div style={{ fontSize: "115%", padding: "10px", paddingTop: "0px" }}>
             {legend}
