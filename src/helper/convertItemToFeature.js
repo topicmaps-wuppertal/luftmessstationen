@@ -109,21 +109,28 @@ const getSignature = (item) => {
 };
 
 const getAdditionalInfo = (item) => {
-  const lastYear = getLastYear(item);
-  const lastYearM1 = getLastYearM1(item);
+  const allAvgYears = Object.keys(item?.mittelwerte);
+  allAvgYears.sort();
+  const last2Years = allAvgYears.slice(-2);
 
-  const lastYearAverage = item?.mittelwerte[lastYear];
-  const lastYearM1Average = item?.mittelwerte[lastYearM1];
+  const currentYear = new Date().getFullYear();
+  const threshold = currentYear - 3;
+
+  const avgYears = last2Years.filter((year) => parseInt(year) >= threshold);
 
   let ret = "";
-  if (lastYearAverage || lastYearM1Average) {
-    ret = "gewichtete Jahresmittelwerte:";
-    if (lastYearAverage) {
-      ret = ret + "\n" + lastYearAverage + " µg/m³ (" + lastYear + ")";
-    }
-    if (lastYearM1Average) {
-      ret = ret + "\n" + lastYearM1Average + " µg/m³ (" + lastYearM1 + ")";
-    }
+
+  if (avgYears.length === 0) {
+    ret = "Kein gewichteter Jahresmittelwert aus dem vergangenen Kalenderjahr vorhanden.";
+  } else if (avgYears.length === 1) {
+    console.log("xxx item", item);
+
+    ret = "Gewichteter Jahresmittelwert:";
+  } else {
+    ret = "Gewichtete Jahresmittelwerte:";
+  }
+  for (const year of avgYears) {
+    ret = ret + "\n" + item?.mittelwerte[year] + " µg/m³ (" + year + ")";
   }
 
   return ret;
