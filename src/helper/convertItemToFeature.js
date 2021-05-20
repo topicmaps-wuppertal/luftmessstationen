@@ -114,7 +114,7 @@ const getAdditionalInfo = (item) => {
   const last2Years = allAvgYears.slice(-2);
 
   const currentYear = new Date().getFullYear();
-  const threshold = currentYear - 3;
+  const threshold = currentYear - 2;
 
   const avgYears = last2Years.filter((year) => parseInt(year) >= threshold);
 
