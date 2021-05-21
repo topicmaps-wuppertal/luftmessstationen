@@ -188,6 +188,112 @@ const InfoPanel = () => {
         </SecondaryInfoPanelSection>
       );
     }
+    let opendataLink = (
+      <a href='https://offenedaten-wuppertal.de/' target='_opendata'>
+        diesem Link
+      </a>
+    );
+    let stationsaktivitaet;
+    const twothousandandeight = new Date("2008-01-01");
+    if (new Date(station?.bis) < twothousandandeight) {
+      stationsaktivitaet = (
+        <div>
+          <b>Stationsaktivität:</b>
+          <p>
+            Von {new Date(station?.von).toLocaleDateString()} bis{" "}
+            {new Date(station?.bis).toLocaleDateString()} generierte diese Station NO₂-Messwerte.
+            <div>
+              Die Daten dieser Station sind nur im Open-Data-Portal unter {opendataLink} verfügbar.
+            </div>
+          </p>
+        </div>
+      );
+    } else if (
+      new Date(station?.von) < twothousandandeight &&
+      new Date(station?.bis) >= twothousandandeight
+    ) {
+      stationsaktivitaet = (
+        <div>
+          <b>Stationsaktivität:</b>
+          <p>
+            Von {new Date(station?.von).toLocaleDateString()} bis{" "}
+            {new Date(station?.bis).toLocaleDateString()} generierte diese Station insgesamt{" "}
+            {valueCounter} NO₂-Messwerte (Ausfälle und Messwerte vor 1.1.2008 nicht berücksichtigt).
+            <div>
+              Die Daten dieser Station sind im Open-Data-Portal unter {opendataLink} verfügbar.
+            </div>
+          </p>
+        </div>
+      );
+    } else if (new Date(station?.von) >= twothousandandeight && station?.bis !== undefined) {
+      stationsaktivitaet = (
+        <div>
+          <b>Stationsaktivität:</b>
+
+          <p>
+            Von {new Date(station?.von).toLocaleDateString()} bis{" "}
+            {new Date(station?.bis).toLocaleDateString()} generierte diese Station insgesamt{" "}
+            {valueCounter} NO₂-Messwerte (Ausfälle nicht berücksichtigt).
+            <div>
+              Die Daten dieser Station sind im Open-Data-Portal unter {opendataLink} verfügbar.
+            </div>
+          </p>
+
+          <b>Messausfälle:</b>
+          {outageCounter > 0 && (
+            <p>
+              Diese Messstation generierte an {outageCounter}{" "}
+              {outageCounter === 1 ? "Monat" : "Monaten"} einen Messausfall. Damit besitzt sie eine
+              Zuverlässigkeit von{" "}
+              {Math.round((valueCounter / (valueCounter + outageCounter)) * 1000) / 10}
+              %.
+            </p>
+          )}
+          {outageCounter === 0 && (
+            <p>
+              Diese Messstation lieferte in jedem Monat der Stationsaktivität einen NO₂-Messwert.
+              Damit liegt bisher kein Messausfall vor.
+            </p>
+          )}
+        </div>
+      );
+    } else {
+      stationsaktivitaet = (
+        <div>
+          <b>Stationsaktivität:</b>
+
+          {station?.bis !== undefined && (
+            <p>
+              Von {new Date(station?.von).toLocaleDateString()} bis{" "}
+              {new Date(station?.bis).toLocaleDateString()} generierte diese Station insgesamt{" "}
+              {valueCounter} NO₂-Messwerte (Ausfälle nicht berücksichtigt).
+            </p>
+          )}
+          {station?.bis === undefined && (
+            <p>
+              Seit {new Date(station?.von).toLocaleDateString()} generierte diese Station{" "}
+              {valueCounter} NO₂-Messwerte (Ausfälle nicht berücksichtigt).
+            </p>
+          )}
+          <b>Messausfälle:</b>
+          {outageCounter > 0 && (
+            <p>
+              Diese Messstation generierte an {outageCounter}{" "}
+              {outageCounter === 1 ? "Monat" : "Monaten"} einen Messausfall. Damit besitzt sie eine
+              Zuverlässigkeit von{" "}
+              {Math.round((valueCounter / (valueCounter + outageCounter)) * 1000) / 10}
+              %.
+            </p>
+          )}
+          {outageCounter === 0 && (
+            <p>
+              Diese Messstation lieferte in jedem Monat der Stationsaktivität einen NO₂-Messwert.
+              Damit liegt bisher kein Messausfall vor.
+            </p>
+          )}
+        </div>
+      );
+    }
 
     return (
       <SecondaryInfo
@@ -229,38 +335,8 @@ const InfoPanel = () => {
                   {station?.strasse} {station?.hausnummer}{" "}
                   {station?.zusatzinfo && <span>({station?.zusatzinfo})</span>}
                 </p>
+                {stationsaktivitaet}
               </div>
-              <b>Stationsaktivität:</b>
-
-              {station?.bis !== undefined && (
-                <p>
-                  Von {new Date(station?.von).toLocaleDateString()} bis{" "}
-                  {new Date(station?.bis).toLocaleDateString()} generierte diese Station insgesamt{" "}
-                  {valueCounter} NO₂-Messwerte (Ausfälle nicht berücksichtigt).
-                </p>
-              )}
-              {station?.bis === undefined && (
-                <p>
-                  Seit {new Date(station?.von).toLocaleDateString()} generierte diese Station{" "}
-                  {valueCounter} NO₂-Messwerte (Ausfälle nicht berücksichtigt).
-                </p>
-              )}
-              <b>Messausfälle:</b>
-              {outageCounter > 0 && (
-                <p>
-                  Diese Messstation generierte an {outageCounter}{" "}
-                  {outageCounter === 1 ? "Monat" : "Monaten"} einen Messausfall. Damit besitzt sie
-                  eine Zuverlässigkeit von{" "}
-                  {Math.round((valueCounter / (valueCounter + outageCounter)) * 1000) / 10}
-                  %.
-                </p>
-              )}
-              {outageCounter === 0 && (
-                <p>
-                  Diese Messstation lieferte in jedem Monat der Stationsaktivität einen
-                  NO₂-Messwert. Damit liegt bisher kein Messausfall vor.
-                </p>
-              )}
             </div>
           </div>
         }
