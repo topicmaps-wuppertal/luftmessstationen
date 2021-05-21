@@ -125,8 +125,6 @@ const getAdditionalInfo = (item) => {
   if (avgYears.length === 0) {
     ret = "Kein gewichteter Jahresmittelwert aus dem vergangenen Kalenderjahr vorhanden.";
   } else if (avgYears.length === 1) {
-    console.log("xxx item", item);
-
     ret = "Gewichteter Jahresmittelwert:";
   } else {
     ret = "Gewichtete Jahresmittelwerte:";
