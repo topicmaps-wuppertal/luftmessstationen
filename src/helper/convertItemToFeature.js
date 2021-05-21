@@ -119,7 +119,9 @@ const getAdditionalInfo = (item) => {
   const avgYears = last2Years.filter((year) => parseInt(year) >= threshold);
 
   let ret = "";
-
+  avgYears.sort(function (a, b) {
+    return parseInt(b) - parseInt(a);
+  });
   if (avgYears.length === 0) {
     ret = "Kein gewichteter Jahresmittelwert aus dem vergangenen Kalenderjahr vorhanden.";
   } else if (avgYears.length === 1) {
