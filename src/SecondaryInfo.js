@@ -189,7 +189,10 @@ const InfoPanel = () => {
       );
     }
     let opendataLink = (
-      <a href='https://offenedaten-wuppertal.de/dataset/umweltzonen-wuppertal' target='_opendata'>
+      <a
+        href='https://offenedaten-wuppertal.de/dataset/luftmessstationen-wuppertal-passivsammler'
+        target='_opendata'
+      >
         diesem Link
       </a>
     );
