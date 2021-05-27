@@ -189,7 +189,7 @@ const InfoPanel = () => {
       );
     }
     let opendataLink = (
-      <a href='https://offenedaten-wuppertal.de/' target='_opendata'>
+      <a href='https://offenedaten-wuppertal.de/dataset/umweltzonen-wuppertal' target='_opendata'>
         diesem Link
       </a>
     );
