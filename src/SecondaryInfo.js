@@ -257,6 +257,30 @@ const InfoPanel = () => {
           )}
         </div>
       );
+    } else if (new Date(station?.von) <= twothousandandeight && station?.bis === undefined) {
+      stationsaktivitaet = (
+        <div>
+          <b>Stationsaktivität:</b>
+
+          {station?.bis !== undefined && (
+            <p>
+              Von {new Date(station?.von).toLocaleDateString()} bis{" "}
+              {new Date(station?.bis).toLocaleDateString()} generierte diese Station insgesamt{" "}
+              {valueCounter} NO₂-Messwerte (Ausfälle nicht berücksichtigt).
+            </p>
+          )}
+          {station?.bis === undefined && (
+            <p>
+              Seit {new Date(station?.von).toLocaleDateString()} generierte diese Station{" "}
+              {valueCounter} NO₂-Messwerte (Ausfälle und Messwerte vor 1.1.2008 nicht
+              berücksichtigt).
+              <div>
+                Die Daten dieser Station sind im Open-Data-Portal unter {opendataLink} verfügbar.
+              </div>
+            </p>
+          )}
+        </div>
+      );
     } else {
       stationsaktivitaet = (
         <div>
