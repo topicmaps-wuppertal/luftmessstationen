@@ -24,6 +24,7 @@ import { LOOKUP } from "./helper/constants";
 import { getGazData } from "./helper/getGazData";
 import titleFactory from "./helper/titleFactory";
 import InfoPanel from "./SecondaryInfo";
+import { MappingConstants } from "react-cismap";
 
 function App() {
   const [gazData, setGazData] = useState([]);
@@ -37,6 +38,7 @@ function App() {
       appKey='LuftmessstationenWuppertal.TopicMap'
       featureItemsURL={"https://wupp-topicmaps-data.cismet.de/data/no2.data.json"}
       // featureItemsURL={"/data/no2.data.json"} //for dev purpose only
+      referenceSystemDefinition={MappingConstants.proj4crs25832def}
       getFeatureStyler={getGTMFeatureStyler}
       featureTooltipFunction={(feature) => feature?.text}
       convertItemToFeature={convertItemToFeature}
