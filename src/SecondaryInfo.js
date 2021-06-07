@@ -207,7 +207,20 @@ const InfoPanel = () => {
             Von {new Date(station?.von).toLocaleDateString()} bis{" "}
             {new Date(station?.bis).toLocaleDateString()} generierte diese Station NO₂-Messwerte.
             <div>
-              Die Daten dieser Station sind nur im Open-Data-Portal unter {opendataLink} verfügbar.
+              Die Daten dieser Luftmessstation sind im Open-Data-Portal der Stadt Wuppertal
+              verfügbar:
+              <ul>
+                <li>
+                  <a href='https://offenedaten-wuppertal.de/dataset/luftmessstationen-wuppertal-passivsammler'>
+                    Stammdaten der Luftmessstationen
+                  </a>
+                </li>
+                <li>
+                  <a href='https://offenedaten-wuppertal.de/dataset/no2-messdaten-wuppertal-passivsammler-2006-und-2007'>
+                    Messwerte und Jahresmittelwerte 2006/2007
+                  </a>
+                </li>
+              </ul>
             </div>
           </p>
         </div>

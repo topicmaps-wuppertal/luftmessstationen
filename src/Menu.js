@@ -124,7 +124,7 @@ const MyMenu = () => {
     content: `Die Stadt Wuppertal führt seit vielen Jahren Messungen und Kartierungen durch,
 um Aufschlüsse über die Luftbelastungssituation zu erhalten. Diese Erkenntnisse werden 
 für Maßnahmen zur Luftreinhaltung und die Stadtentwicklung genutzt. Einer der derzeit 
-am meisten diskutierte Luftschadstoff ist Stickstoffdioxid (NO₂ ). Dieser wird als 
+am meisten diskutierte Luftschadstoff ist Stickstoffdioxid (NO₂). Dieser wird als 
 Reizgas mit stechend-stickigem Geruch bereits in geringen Konzentrationen wahrgenommen. 
 Die Inhalation ist für den Menschen der einzig relevante Aufnahmeweg. 
    
@@ -155,7 +155,7 @@ Einflüssen befindet sich an der offenen Seite des Probeentnahmeröhrchens eine 
 Zum Schutz vor Witterungseinflüssen werden die Sammler in einem nach unten geöffneten Gehäuse 
 eingehängt und exponiert.
 
-<div style="text-align:center"><img src="/img/passivsammler.jpg" /></div>
+<div style="text-align:center"><img src="https://topicmaps-wuppertal.github.io/luftmessstationen/img/passivsammler.jpg" /></div>
 
 _Beispiel für einen [Passivsammler](https://www.lanuv.nrw.de/fileadmin/lanuv/luft/gifs/no2_gr.jpg); Bildquelle: Landesamt für Natur- Umwelt und Verbraucherschutz NRW ([LANUV](https://www.lanuv.nrw.de/impressum))._
 
