@@ -155,7 +155,7 @@ Einflüssen befindet sich an der offenen Seite des Probeentnahmeröhrchens eine 
 Zum Schutz vor Witterungseinflüssen werden die Sammler in einem nach unten geöffneten Gehäuse 
 eingehängt und exponiert.
 
-<div style="text-align:center"><img src="https://topicmaps-wuppertal.github.io/luftmessstationen/img/passivsammler.jpg" /></div>
+<div style="text-align:center"><img width="50%" src="https://topicmaps-wuppertal.github.io/luftmessstationen/img/passivsammler.jpg" /></div>
 
 _Beispiel für einen [Passivsammler](https://www.lanuv.nrw.de/fileadmin/lanuv/luft/gifs/no2_gr.jpg); Bildquelle: Landesamt für Natur- Umwelt und Verbraucherschutz NRW ([LANUV](https://www.lanuv.nrw.de/impressum))._
 
