@@ -10,6 +10,13 @@
       "name": "Gewerbeschulstraße",
       "url": "http://localhost:3000/#/?lat=51.26848897192792&lng=7.202854981158262&zoom=14",
       "webRoot": "${workspaceFolder}"
+    },
+    {
+      "type": "pwa-chrome",
+      "request": "launch",
+      "name": "Friedrich-Engels-Allee 308",
+      "url": "http://localhost:3000/#/?lat=51.26496630932143&lng=7.183723605695018&zoom=14",
+      "webRoot": "${workspaceFolder}"
     }
   ]
 }

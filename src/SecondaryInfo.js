@@ -198,6 +198,7 @@ const InfoPanel = () => {
     );
     let stationsaktivitaet;
     const twothousandandeight = new Date("2008-01-01");
+
     if (new Date(station?.bis) < twothousandandeight) {
       stationsaktivitaet = (
         <div>
@@ -260,7 +261,7 @@ const InfoPanel = () => {
           )}
         </div>
       );
-    } else if (new Date(station?.von) <= twothousandandeight && station?.bis === undefined) {
+    } else if (new Date(station?.von) < twothousandandeight && station?.bis === undefined) {
       stationsaktivitaet = (
         <div>
           <b>Stationsaktivität:</b>
