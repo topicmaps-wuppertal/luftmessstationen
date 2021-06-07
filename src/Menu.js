@@ -14,9 +14,8 @@ import ConfigurableDocBlocks from "react-cismap/topicmaps/ConfigurableDocBlocks"
 import { LOOKUP } from "./helper/constants";
 const MyMenu = () => {
   const { setAppMenuActiveMenuSection } = useContext(UIDispatchContext);
-  const { filterState, filterMode, filteredItems, shownFeatures } = useContext(
-    FeatureCollectionContext
-  );
+  const { filterState, filterMode, filteredItems, shownFeatures } =
+    useContext(FeatureCollectionContext);
   const { setFilterState, setFilterMode } = useContext(FeatureCollectionDispatchContext);
 
   const { items } = useContext(FeatureCollectionContext);
@@ -131,25 +130,46 @@ Die Inhalation ist für den Menschen der einzig relevante Aufnahmeweg.
    
 Die europäische Union hat für ihre Mitgliedsstaaten mit mehreren Luftqualitätsrichtlinien
 verbindliche Luftqualitätsziele zur Vermeidung oder Verringerung schädlicher Auswirkungen
-auf die menschliche Gesundheit und die Umwelt festgelegt. Danach wird die Luftqualität 
-in den Staaten der EU nach einheitlichen Methoden und Kriterien beurteilt. In der 
-Bundesrepublik Deutschland wurden diese Richtlinien durch Novellierung des 
-Bundes-Immissions­schutzgesetzes (BImSchG) sowie durch die Einführung der 39. Verordnung 
-zum BImSchG (39. BImSchV) in deutsches Recht umgesetzt. Für Stickstoffdioxid (NO₂ ) gilt 
-seit dem Jahr 2010 ein Jahresmittelwert für NO₂  von 40 µg pro Kubikmeter Luft. Die 
-Messungen von Stickstoffdioxid (NO₂ ) werden in Wuppertal mit sogenannten Passivsammlern 
-durchgeführt und nahezu monatlich abgelesen. 
+auf die menschliche Gesundheit und die Umwelt festgelegt. Danach wird die Luftqualität
+in den Staaten der EU nach einheitlichen Methoden und Kriterien beurteilt. In der
+Bundesrepublik Deutschland wurden diese Richtlinien durch Novellierung des
+Bundes-Immissions­schutzgesetzes (BImSchG) sowie durch die Einführung der 39. Verordnung
+zum BImSchG (39. BImSchV) in deutsches Recht umgesetzt. Für Stickstoffdioxid (NO₂) gilt
+seit dem Jahr 2010 ein Jahresmittelwert für NO₂ von 40 µg pro Kubikmeter Luft. Die
+Messungen von Stickstoffdioxid (NO₂) werden in Wuppertal mit sogenannten Passivsammlern
+durchgeführt und nahezu monatlich abgelesen.
   
 Die Luftmessstationskarte zeigt die Positionen dieser Passivsammler im Wuppertaler Stadtgebiet,
 welche in den vergangenen zehn Jahren Messwerte lieferten. Die farbigen Signaturen in der
-Karte beziehen sich dabei auf den zuletzt verfügbaren monatlichen NO₂ -Messwert: unauffällig 
-grün (≦ 35 mg/m³), auffällig gelb (> 35 µg/m³) und warnend rot (> 40 µg/m³). Die Signaturen 
-für Passivsammler, welche bei der letzten monatlichen Ablesung keinen Messwert geliefert 
-haben, sind türkis eingefärbt (temporärer Ausfall). Wenn eine Messstation in den letzten 
-zehn Jahren abgebaut wurde und damit keine weiteren NO₂ -Messwerte liefert, liegt eine 
-blaugraue Signatur vor. Die Daten zu den Messstationen und Messwerten seit dem Jahr 
-2006 sind im Open-Data-Angebot der Stadt Wuppertal als Datensatz Luftmessstationen 
-[[Link zum Open-Data-Portal](https://offenedaten-wuppertal.de/)] verfügbar.`,
+Karte beziehen sich dabei auf den zuletzt verfügbaren monatlichen NO₂-Messwert: unauffällig
+grün (≦ 35 mg/m³), auffällig gelb (> 35 µg/m³) und warnend rot (> 40 µg/m³). Die Signaturen
+für Passivsammler, welche bei der letzten monatlichen Ablesung keinen Messwert geliefert
+haben, sind türkis eingefärbt (temporärer Ausfall). Wenn eine Messstation in den letzten
+zehn Jahren abgebaut wurde und damit keine weiteren NO₂-Messwerte liefert, liegt eine
+blaugraue Signatur vor. 
+
+Ein Passivsammler ist ein kleines mit Adsorbermaterial gefülltes Röhrchen, welches ohne Pumpe 
+(ohne aktive Probenahme) Schadstoffe aus der Luft über die natürliche Ausbreitung und Verteilung 
+(Diffusion) aufnehmen und anreichern kann. Zur Verringerung von wind- und turbulenzbedingten 
+Einflüssen befindet sich an der offenen Seite des Probeentnahmeröhrchens eine Glasfritte. 
+Zum Schutz vor Witterungseinflüssen werden die Sammler in einem nach unten geöffneten Gehäuse 
+eingehängt und exponiert.
+
+<div style="text-align:center"><img src="/img/passivsammler.jpg" /></div>
+
+_Beispiel für einen [Passivsammler](https://www.lanuv.nrw.de/fileadmin/lanuv/luft/gifs/no2_gr.jpg); Bildquelle: Landesamt für Natur- Umwelt und Verbraucherschutz NRW ([LANUV](https://www.lanuv.nrw.de/impressum))._
+
+
+
+Die Funktionsweise eines Passivsammlers basiert auf der Anreicherung von Stickstoffdioxid (NO₂) an einem geeigneten Adsorbens ohne aktive Probennahme. Das Probeentnahmesystem besteht aus einem Kunststoffröhrchen, an dessen einem Ende sich ein mit Triethanolamin imprägniertes Edelstahl-Drahtsieb als Adsorbens befindet. Das in der Außenluft enthaltene NO₂ wird durch Diffusion zu diesem Adsorbens transportiert und dort adsorbiert. Die Röhrchen bzw. die Stickstoffdioxidmenge werden anschließend im Labor als Nitrit, z.B. mittels Fotometrie, analysiert. Aus der Analytmenge, dem Expositionszeitraum und der Sammelrate wird die mittlere Konzentration im Expositionszeitraum berechnet. Typische Expositionszeiträume liegen im Bereich von zwei bis sechs Wochen.
+
+Für die in Wuppertal durchgeführten Messungen wurden Expositions- bzw. Messzeiträume von etwa vier Wochen realisiert, um eine Auswertung auf Monatsmittelwertbasis zu ermöglichen. Der vorliegende Messwert beschreibt die mittlere Konzentration im Expositionsraum. Nach etwa vier Wochen erfolgt an den Wuppertaler Messstationen der Probeentnahmewechsel durch ein beauftragtes Unternehmen. Nach dem Wechsel werden die Proben im Labor analysiert. Die Messergebnisse liegen ca. 2-3 Wochen nach dem Wechsel vor; mögliche Verzögerungen bei der Datenlieferung treten selten auf. Nach Vorliegen der Daten werden diese seitens der Stadt Wuppertal auf Plausibilität geprüft. Die Daten werden spätestens eine Woche nach Erhalt in das Fachsystem übernommen. Es ergibt sich daraus eine maximale Verzögerung hinsichtlich des Zeitpunkts der Veröffentlichung der NO₂-Messwerte von ca. vier Wochen.
+
+Die Daten zu den Luftmessstationen (Passivsammler für NO₂) seit dem Jahr 2006 sind im Open-Data-Angebot der Stadt Wuppertal verfügbar. Diese werden in vier separaten Datenquellen publiziert:
+- [Stammdaten der Luftmessstationen](https://offenedaten-wuppertal.de/dataset/luftmessstationen-wuppertal-passivsammler)
+- [Messdaten (Monatsmittelwerte) seit dem Jahr 2008](https://offenedaten-wuppertal.de/dataset/no2-messdaten-wuppertal-passivsammler-ab-2008)
+- [Jahresmittelwerte seit dem Jahr 2008](https://offenedaten-wuppertal.de/dataset/no2-jahresmittelwerte-wuppertal-passivsammler-ab-2008)
+- [Messdaten der Jahre 2006 und 2007](https://offenedaten-wuppertal.de/dataset/no2-messdaten-wuppertal-passivsammler-2006-und-2007).`,
   };
   return (
     <ModalApplicationMenu
