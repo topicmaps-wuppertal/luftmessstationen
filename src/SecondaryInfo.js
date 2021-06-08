@@ -433,7 +433,7 @@ const InfoPanel = () => {
       />
     );
   } else {
-    return <div>{footer}</div>;
+    return null;
   }
 };
 export default InfoPanel;
