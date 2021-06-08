@@ -12,6 +12,7 @@ import FilterPanel from "react-cismap/topicmaps/menu/FilterPanel";
 import DefaultSettingsPanel from "react-cismap/topicmaps/menu/DefaultSettingsPanel";
 import ConfigurableDocBlocks from "react-cismap/topicmaps/ConfigurableDocBlocks";
 import { LOOKUP } from "./helper/constants";
+import MenuFooter from "./MenuFooter";
 const MyMenu = () => {
   const { setAppMenuActiveMenuSection } = useContext(UIDispatchContext);
   const { filterState, filterMode, filteredItems, shownFeatures } =
@@ -222,6 +223,7 @@ der Stadt Wuppertal verfügbar. Diese werden in vier separaten Datenquellen publ
     <ModalApplicationMenu
       menuIcon={"bars"}
       menuTitle={"Filter, Einstellungen und Kompaktanleitung"}
+      menuFooter={<MenuFooter />}
       menuIntroduction={
         <span>
           Benutzen Sie die Auswahlmöglichkeiten unter{" "}
