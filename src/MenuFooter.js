@@ -2,13 +2,22 @@ import { useContext } from "react";
 import { UIDispatchContext } from "react-cismap/contexts/UIContextProvider";
 import { getApplicationVersion } from "./version";
 import { version as reactCismapVersion } from "react-cismap/meta";
+import { Link, scroller } from "react-scroll";
+
 const Footer = () => {
   const { setAppMenuActiveMenuSection } = useContext(UIDispatchContext);
+  console.log("yyy scroller", scroller);
 
   return (
     <div style={{ fontSize: "11px" }}>
-      <b>Hintergrundkarten</b>: DOP © RVR | Stadtkarte 2.0 © RVR | WebAtlasDE © BKG{" "}
-      <a className='pleaseRenderAsLink' onClick={() => setAppMenuActiveMenuSection("help")}>
+      <b>Hintergrundkarten</b>: Stadtkarte 2.0 © RVR | True Orthophoto 2020 © Stadt Wuppertal{" "}
+      <a
+        className='pleaseRenderAsLink'
+        onClick={() => {
+          setAppMenuActiveMenuSection("help");
+          scroller.scrollTo("Datengrundlage", { containerId: "myMenu" });
+        }}
+      >
         (Details und Nutzungsbedingungen)
       </a>
       <br />
