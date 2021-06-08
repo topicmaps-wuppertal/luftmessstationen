@@ -296,8 +296,7 @@ const InfoPanel = () => {
           <b>Stationsaktivität:</b>
 
           <p>
-            Von {new Date(station?.von).toLocaleDateString()} bis{" "}
-            {new Date(station?.bis).toLocaleDateString()} generierte diese Station insgesamt{" "}
+            Seit {new Date(station?.von).toLocaleDateString()} generierte diese Station{" "}
             {valueCounter} NO₂-Messwerte (Ausfälle nicht berücksichtigt).
             {opendataLinkSections[3]}
           </p>
@@ -325,21 +324,11 @@ const InfoPanel = () => {
       stationsaktivitaet = (
         <div>
           <b>Stationsaktivität:</b>
+          <p>
+            Seit {new Date(station?.von).toLocaleDateString()} generierte diese Station{" "}
+            {valueCounter} NO₂-Messwerte (Ausfälle und Messwerte vor 1.1.2008 nicht berücksichtigt).
+          </p>
 
-          {station?.bis !== undefined && (
-            <p>
-              Von {new Date(station?.von).toLocaleDateString()} bis{" "}
-              {new Date(station?.bis).toLocaleDateString()} generierte diese Station insgesamt{" "}
-              {valueCounter} NO₂-Messwerte (Ausfälle nicht berücksichtigt).
-            </p>
-          )}
-          {station?.bis === undefined && (
-            <p>
-              Seit {new Date(station?.von).toLocaleDateString()} generierte diese Station{" "}
-              {valueCounter} NO₂-Messwerte (Ausfälle und Messwerte vor 1.1.2008 nicht
-              berücksichtigt).
-            </p>
-          )}
           {opendataLinkSections[1]}
         </div>
       );
