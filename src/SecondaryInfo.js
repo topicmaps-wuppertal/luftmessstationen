@@ -9,7 +9,7 @@ import {
 } from "./helper/convertItemToFeature";
 import Chart from "chart.js";
 import ReactChartkick, { ColumnChart } from "react-chartkick";
-import { LOOKUP, MONTHS } from "./helper/constants";
+import { LOOKUP, MONTHS, opendataLinkSections } from "./helper/constants";
 import Color from "color";
 import Icon from "react-cismap/commons/Icon";
 import { ResponsiveTopicMapContext } from "react-cismap/contexts/ResponsiveTopicMapContextProvider";
@@ -196,32 +196,19 @@ const InfoPanel = () => {
         diesem Link
       </a>
     );
+
     let stationsaktivitaet;
     const twothousandandeight = new Date("2008-01-01");
 
     if (new Date(station?.bis) < twothousandandeight) {
+      //Fall 1
       stationsaktivitaet = (
         <div>
           <b>Stationsaktivität:</b>
           <p>
             Von {new Date(station?.von).toLocaleDateString()} bis{" "}
             {new Date(station?.bis).toLocaleDateString()} generierte diese Station NO₂-Messwerte.
-            <div>
-              Die Daten dieser Luftmessstation sind im Open-Data-Portal der Stadt Wuppertal
-              verfügbar:
-              <ul>
-                <li>
-                  <a href='https://offenedaten-wuppertal.de/dataset/luftmessstationen-wuppertal-passivsammler'>
-                    Stammdaten der Luftmessstationen
-                  </a>
-                </li>
-                <li>
-                  <a href='https://offenedaten-wuppertal.de/dataset/no2-messdaten-wuppertal-passivsammler-2006-und-2007'>
-                    Messwerte und Jahresmittelwerte 2006/2007
-                  </a>
-                </li>
-              </ul>
-            </div>
+            {opendataLinkSections[0]}
           </p>
         </div>
       );
@@ -229,6 +216,7 @@ const InfoPanel = () => {
       new Date(station?.von) < twothousandandeight &&
       new Date(station?.bis) >= twothousandandeight
     ) {
+      //Fall 2
       stationsaktivitaet = (
         <div>
           <b>Stationsaktivität:</b>
@@ -236,13 +224,12 @@ const InfoPanel = () => {
             Von {new Date(station?.von).toLocaleDateString()} bis{" "}
             {new Date(station?.bis).toLocaleDateString()} generierte diese Station insgesamt{" "}
             {valueCounter} NO₂-Messwerte (Ausfälle und Messwerte vor 1.1.2008 nicht berücksichtigt).
-            <div>
-              Die Daten dieser Station sind im Open-Data-Portal unter {opendataLink} verfügbar.
-            </div>
+            {opendataLinkSections[1]}
           </p>
         </div>
       );
     } else if (new Date(station?.von) >= twothousandandeight && station?.bis !== undefined) {
+      //Fall 3
       stationsaktivitaet = (
         <div>
           <b>Stationsaktivität:</b>
@@ -251,9 +238,7 @@ const InfoPanel = () => {
             Von {new Date(station?.von).toLocaleDateString()} bis{" "}
             {new Date(station?.bis).toLocaleDateString()} generierte diese Station insgesamt{" "}
             {valueCounter} NO₂-Messwerte (Ausfälle nicht berücksichtigt).
-            <div>
-              Die Daten dieser Station sind im Open-Data-Portal unter {opendataLink} verfügbar.
-            </div>
+            {opendataLinkSections[2]}
           </p>
 
           <b>Messausfälle:</b>
@@ -275,6 +260,7 @@ const InfoPanel = () => {
         </div>
       );
     } else if (new Date(station?.von) < twothousandandeight && station?.bis === undefined) {
+      //Fall 4
       stationsaktivitaet = (
         <div>
           <b>Stationsaktivität:</b>
@@ -291,14 +277,13 @@ const InfoPanel = () => {
               Seit {new Date(station?.von).toLocaleDateString()} generierte diese Station{" "}
               {valueCounter} NO₂-Messwerte (Ausfälle und Messwerte vor 1.1.2008 nicht
               berücksichtigt).
-              <div>
-                Die Daten dieser Station sind im Open-Data-Portal unter {opendataLink} verfügbar.
-              </div>
             </p>
           )}
+          {opendataLinkSections[2]}
         </div>
       );
     } else {
+      //Fall 5
       stationsaktivitaet = (
         <div>
           <b>Stationsaktivität:</b>
@@ -332,6 +317,7 @@ const InfoPanel = () => {
               Damit liegt bisher kein Messausfall vor.
             </p>
           )}
+          {opendataLinkSections[2]}
         </div>
       );
     }
