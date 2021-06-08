@@ -107,42 +107,7 @@ const InfoPanel = () => {
         avgsChartData.push([year, avgs[year]]);
       }
     }
-    const x = (
-      <ul>
-        <li>
-          <a
-            target='_opendata'
-            href='https://offenedaten-wuppertal.de/dataset/luftmessstationen-wuppertal-passivsammler'
-          >
-            Stammdaten der Luftmessstationen
-          </a>
-        </li>
-        <li>
-          <a
-            target='_opendata'
-            href='https://offenedaten-wuppertal.de/dataset/no2-messdaten-wuppertal-passivsammler-ab-2008'
-          >
-            Messdaten (Monatsmittelwerte) seit dem Jahr 2008
-          </a>
-        </li>
-        <li>
-          <a
-            target='_opendata'
-            href='https://offenedaten-wuppertal.de/dataset/no2-jahresmittelwerte-wuppertal-passivsammler-ab-2008'
-          >
-            Jahresmittelwerte seit dem Jahr 2008
-          </a>
-        </li>
-        <li>
-          <a
-            target='_opendata'
-            href='https://offenedaten-wuppertal.de/dataset/no2-messdaten-wuppertal-passivsammler-2006-und-2007'
-          >
-            Messdaten der Jahre 2006 und 2007
-          </a>
-        </li>
-      </ul>
-    );
+
     const subSections = [];
     const legend = (
       <div style={{ fontSize: "90%", textAlign: "center" }}>
@@ -314,7 +279,7 @@ const InfoPanel = () => {
               berücksichtigt).
             </p>
           )}
-          {opendataLinkSections[2]}
+          {opendataLinkSections[1]}
         </div>
       );
     } else {
@@ -352,7 +317,7 @@ const InfoPanel = () => {
               Damit liegt bisher kein Messausfall vor.
             </p>
           )}
-          {opendataLinkSections[2]}
+          {opendataLinkSections[1]}
         </div>
       );
     }
