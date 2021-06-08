@@ -24,3 +24,6 @@ yarn-error.log*
 
 
 /public/data
+.githash
+.package.json.without.version
+.version
