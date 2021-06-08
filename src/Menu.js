@@ -155,21 +155,68 @@ Einflüssen befindet sich an der offenen Seite des Probeentnahmeröhrchens eine 
 Zum Schutz vor Witterungseinflüssen werden die Sammler in einem nach unten geöffneten Gehäuse 
 eingehängt und exponiert.
 
-<div style="text-align:center"><img width="50%" src="https://topicmaps-wuppertal.github.io/luftmessstationen/img/passivsammler.jpg" /></div>
+<div style="text-align:center">
+<img width="50%" src="https://topicmaps-wuppertal.github.io/luftmessstationen/img/passivsammler.jpg" />
+</div>
 
-_Beispiel für einen [Passivsammler](https://www.lanuv.nrw.de/fileadmin/lanuv/luft/gifs/no2_gr.jpg); Bildquelle: Landesamt für Natur- Umwelt und Verbraucherschutz NRW ([LANUV](https://www.lanuv.nrw.de/impressum))._
+_Beispiel für einen [Passivsammler](https://www.lanuv.nrw.de/fileadmin/lanuv/luft/gifs/no2_gr.jpg); 
+Bildquelle: Landesamt für Natur- Umwelt und Verbraucherschutz NRW ([LANUV](https://www.lanuv.nrw.de/impressum))._
 
+Die Funktionsweise eines Passivsammlers basiert auf der Anreicherung von Stickstoffdioxid (NO₂) an einem 
+geeigneten Adsorbens ohne aktive Probennahme. Das Probeentnahmesystem besteht aus einem Kunststoffröhrchen, 
+an dessen einem Ende sich ein mit Triethanolamin imprägniertes Edelstahl-Drahtsieb als Adsorbens befindet. 
+Das in der Außenluft enthaltene NO₂ wird durch Diffusion zu diesem Adsorbens transportiert und dort adsorbiert. 
+Die Röhrchen bzw. die Stickstoffdioxidmenge werden anschließend im Labor als Nitrit, z.B. mittels Fotometrie, 
+analysiert. Aus der Analytmenge, dem Expositionszeitraum und der Sammelrate wird die mittlere Konzentration 
+im Expositionszeitraum berechnet. Typische Expositionszeiträume liegen im Bereich von zwei bis sechs Wochen.
 
+Für die in Wuppertal durchgeführten Messungen wurden Expositions- bzw. Messzeiträume von etwa vier Wochen 
+realisiert, um eine Auswertung auf Monatsmittelwertbasis zu ermöglichen. Der vorliegende Messwert beschreibt 
+die mittlere Konzentration im Expositionsraum. Nach etwa vier Wochen erfolgt an den Wuppertaler Messstationen 
+der Probeentnahmewechsel durch ein beauftragtes Unternehmen. Nach dem Wechsel werden die Proben im Labor 
+analysiert. Die Messergebnisse liegen ca. 2-3 Wochen nach dem Wechsel vor; mögliche Verzögerungen bei der 
+Datenlieferung treten selten auf. Nach Vorliegen der Daten werden diese seitens der Stadt Wuppertal auf 
+Plausibilität geprüft. Die Daten werden spätestens eine Woche nach Erhalt in das Fachsystem übernommen. 
+Es ergibt sich daraus eine maximale Verzögerung hinsichtlich des Zeitpunkts der Veröffentlichung der 
+NO₂-Messwerte von ca. vier Wochen.
 
-Die Funktionsweise eines Passivsammlers basiert auf der Anreicherung von Stickstoffdioxid (NO₂) an einem geeigneten Adsorbens ohne aktive Probennahme. Das Probeentnahmesystem besteht aus einem Kunststoffröhrchen, an dessen einem Ende sich ein mit Triethanolamin imprägniertes Edelstahl-Drahtsieb als Adsorbens befindet. Das in der Außenluft enthaltene NO₂ wird durch Diffusion zu diesem Adsorbens transportiert und dort adsorbiert. Die Röhrchen bzw. die Stickstoffdioxidmenge werden anschließend im Labor als Nitrit, z.B. mittels Fotometrie, analysiert. Aus der Analytmenge, dem Expositionszeitraum und der Sammelrate wird die mittlere Konzentration im Expositionszeitraum berechnet. Typische Expositionszeiträume liegen im Bereich von zwei bis sechs Wochen.
-
-Für die in Wuppertal durchgeführten Messungen wurden Expositions- bzw. Messzeiträume von etwa vier Wochen realisiert, um eine Auswertung auf Monatsmittelwertbasis zu ermöglichen. Der vorliegende Messwert beschreibt die mittlere Konzentration im Expositionsraum. Nach etwa vier Wochen erfolgt an den Wuppertaler Messstationen der Probeentnahmewechsel durch ein beauftragtes Unternehmen. Nach dem Wechsel werden die Proben im Labor analysiert. Die Messergebnisse liegen ca. 2-3 Wochen nach dem Wechsel vor; mögliche Verzögerungen bei der Datenlieferung treten selten auf. Nach Vorliegen der Daten werden diese seitens der Stadt Wuppertal auf Plausibilität geprüft. Die Daten werden spätestens eine Woche nach Erhalt in das Fachsystem übernommen. Es ergibt sich daraus eine maximale Verzögerung hinsichtlich des Zeitpunkts der Veröffentlichung der NO₂-Messwerte von ca. vier Wochen.
-
-Die Daten zu den Luftmessstationen (Passivsammler für NO₂) seit dem Jahr 2006 sind im Open-Data-Angebot der Stadt Wuppertal verfügbar. Diese werden in vier separaten Datenquellen publiziert:
-- [Stammdaten der Luftmessstationen](https://offenedaten-wuppertal.de/dataset/luftmessstationen-wuppertal-passivsammler)
-- [Messdaten (Monatsmittelwerte) seit dem Jahr 2008](https://offenedaten-wuppertal.de/dataset/no2-messdaten-wuppertal-passivsammler-ab-2008)
-- [Jahresmittelwerte seit dem Jahr 2008](https://offenedaten-wuppertal.de/dataset/no2-jahresmittelwerte-wuppertal-passivsammler-ab-2008)
-- [Messdaten der Jahre 2006 und 2007](https://offenedaten-wuppertal.de/dataset/no2-messdaten-wuppertal-passivsammler-2006-und-2007).`,
+Die Daten zu den Luftmessstationen (Passivsammler für NO₂) seit dem Jahr 2006 sind im Open-Data-Angebot 
+der Stadt Wuppertal verfügbar. Diese werden in vier separaten Datenquellen publiziert:
+<ul>
+  <li>
+    <a
+      target='_opendata'
+      href='https://offenedaten-wuppertal.de/dataset/luftmessstationen-wuppertal-passivsammler'
+    >
+      Stammdaten der Luftmessstationen
+    </a>
+  </li>
+  <li>
+    <a
+      target='_opendata'
+      href='https://offenedaten-wuppertal.de/dataset/no2-messdaten-wuppertal-passivsammler-ab-2008'
+    >
+      Messdaten (Monatsmittelwerte) seit dem Jahr 2008
+    </a>
+  </li>
+  <li>
+    <a
+      target='_opendata'
+      href='https://offenedaten-wuppertal.de/dataset/no2-jahresmittelwerte-wuppertal-passivsammler-ab-2008'
+    >
+      Jahresmittelwerte seit dem Jahr 2008
+    </a>
+  </li>
+  <li>
+    <a
+      target='_opendata'
+      href='https://offenedaten-wuppertal.de/dataset/no2-messdaten-wuppertal-passivsammler-2006-und-2007'
+    >
+      Messdaten der Jahre 2006 und 2007
+    </a>
+  </li>
+</ul>
+`,
   };
   return (
     <ModalApplicationMenu
