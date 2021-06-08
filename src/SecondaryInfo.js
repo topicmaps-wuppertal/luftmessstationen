@@ -289,6 +289,37 @@ const InfoPanel = () => {
           )}
         </div>
       );
+    } else if (new Date(station?.von) >= twothousandandeight && station?.bis === undefined) {
+      //Fall 3.5
+      stationsaktivitaet = (
+        <div>
+          <b>Stationsaktivität:</b>
+
+          <p>
+            Von {new Date(station?.von).toLocaleDateString()} bis{" "}
+            {new Date(station?.bis).toLocaleDateString()} generierte diese Station insgesamt{" "}
+            {valueCounter} NO₂-Messwerte (Ausfälle nicht berücksichtigt).
+            {opendataLinkSections[3]}
+          </p>
+
+          <b>Messausfälle:</b>
+          {outageCounter > 0 && (
+            <p>
+              Diese Messstation generierte an {outageCounter}{" "}
+              {outageCounter === 1 ? "Monat" : "Monaten"} einen Messausfall. Damit besitzt sie eine
+              Zuverlässigkeit von{" "}
+              {Math.round((valueCounter / (valueCounter + outageCounter)) * 1000) / 10}
+              %.
+            </p>
+          )}
+          {outageCounter === 0 && (
+            <p>
+              Diese Messstation lieferte in jedem Monat der Stationsaktivität einen NO₂-Messwert.
+              Damit liegt bisher kein Messausfall vor.
+            </p>
+          )}
+        </div>
+      );
     } else if (new Date(station?.von) < twothousandandeight && station?.bis === undefined) {
       //Fall 4
       stationsaktivitaet = (
