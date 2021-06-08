@@ -188,14 +188,6 @@ const InfoPanel = () => {
         </SecondaryInfoPanelSection>
       );
     }
-    let opendataLink = (
-      <a
-        href='https://offenedaten-wuppertal.de/dataset/luftmessstationen-wuppertal-passivsammler'
-        target='_opendata'
-      >
-        diesem Link
-      </a>
-    );
 
     let stationsaktivitaet;
     const twothousandandeight = new Date("2008-01-01");
