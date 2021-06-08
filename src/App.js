@@ -112,7 +112,7 @@ function App() {
           }}
         />
         <FeatureCollection></FeatureCollection>
-        <LogSelection />
+        {/* <LogSelection /> */}
       </TopicMapComponent>
     </TopicMapContextProvider>
   );
