@@ -261,7 +261,7 @@ der Stadt Wuppertal verfügbar. Diese werden in vier separaten Datenquellen publ
               , eine{" "}
               <NW>
                 <Icon name='child' /> Kindertageseinrichtung
-              </NW>{" "}
+              </NW>
               , eine{" "}
               <NW>
                 <Icon name='graduation-cap' /> Schule
