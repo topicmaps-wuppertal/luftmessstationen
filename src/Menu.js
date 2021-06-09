@@ -13,6 +13,9 @@ import DefaultSettingsPanel from "react-cismap/topicmaps/menu/DefaultSettingsPan
 import ConfigurableDocBlocks from "react-cismap/topicmaps/ConfigurableDocBlocks";
 import { LOOKUP } from "./helper/constants";
 import MenuFooter from "./MenuFooter";
+import CustomizationContextProvider from "react-cismap/contexts/CustomizationContextProvider";
+import Icon from "react-cismap/commons/Icon";
+
 const MyMenu = () => {
   const { setAppMenuActiveMenuSection } = useContext(UIDispatchContext);
   const { filterState, filterMode, filteredItems, shownFeatures } =
@@ -219,75 +222,130 @@ der Stadt Wuppertal verfügbar. Diese werden in vier separaten Datenquellen publ
 </ul>
 `,
   };
+
+  const helpConfig = getSimpleHelpForTM(topicMapTitle, simpleHelp, {
+    listWithSymbols4InKartepositionieren: <div>xxx</div>,
+  });
+
   return (
-    <ModalApplicationMenu
-      menuIcon={"bars"}
-      menuTitle={"Filter, Einstellungen und Kompaktanleitung"}
-      menuFooter={<MenuFooter />}
-      menuIntroduction={
-        <span>
-          Benutzen Sie die Auswahlmöglichkeiten unter{" "}
-          <Link
-            className='useAClassNameToRenderProperLink'
-            to='filter'
-            containerId='myMenu'
-            smooth={true}
-            delay={100}
-            onClick={() => setAppMenuActiveMenuSection("filter")}
-          >
-            Filter
-          </Link>
-          , um die in der Karte angezeigten vorbildlichen Luftmessstationen für Stickstoffdioxid
-          (NO₂) auf die für Sie relevanten Stationen zu beschränken. Über{" "}
-          <Link
-            className='useAClassNameToRenderProperLink'
-            to='settings'
-            containerId='myMenu'
-            smooth={true}
-            delay={100}
-            onClick={() => setAppMenuActiveMenuSection("settings")}
-          >
-            Einstellungen
-          </Link>{" "}
-          können Sie die Darstellung der Hintergrundkarte und der Stationen an Ihre Vorlieben
-          anpassen. Wählen Sie die{" "}
-          <Link
-            className='useAClassNameToRenderProperLink'
-            to='help'
-            containerId='myMenu'
-            smooth={true}
-            delay={100}
-            onClick={() => setAppMenuActiveMenuSection("help")}
-          >
-            Kompaktanleitung
-          </Link>{" "}
-          für detailliertere Bedienungsinformationen.
-        </span>
-      }
-      menuSections={[
-        <Section
-          key='filter'
-          sectionKey='filter'
-          sectionTitle={getFilterHeader()}
-          sectionBsStyle='primary'
-          sectionContent={<FilterPanel filterConfiguration={filterConfiguration} />}
-        />,
-        <DefaultSettingsPanel
-          previewMapPosition='lat=51.2607860760692&lng=7.164304562911684&title&zoom=9'
-          previewMapClusteringOptions={undefined}
-          key='settings'
-        />,
-        <Section
-          key='help'
-          sectionKey='help'
-          sectionTitle='Kompaktanleitung'
-          sectionBsStyle='default'
-          sectionContent={
-            <ConfigurableDocBlocks configs={getSimpleHelpForTM(topicMapTitle, simpleHelp)} />
-          }
-        />,
-      ]}
-    />
+    <CustomizationContextProvider
+      customizations={{
+        inKartePositionieren: {
+          listWithSymbols: (
+            <p>
+              Durch das in der Auswahlliste vorangestellte Symbol erkennen Sie, ob es sich bei einem
+              Treffer um einen{" "}
+              <NW>
+                <Icon name='circle' /> Stadtbezirk
+              </NW>
+              , ein{" "}
+              <NW>
+                <Icon name='pie-chart' /> Quartier
+              </NW>
+              , eine{" "}
+              <NW>
+                <Icon name='home' /> Adresse
+              </NW>
+              , eine{" "}
+              <NW>
+                <Icon name='road' /> Straße ohne Hausnummern
+              </NW>
+              , einen{" "}
+              <NW>
+                <Icon name='tag' /> POI
+              </NW>
+              , die{" "}
+              <NW>
+                <Icon name='tags' /> alternative Bezeichnung eines POI
+              </NW>
+              , eine{" "}
+              <NW>
+                <Icon name='child' /> Kindertageseinrichtung
+              </NW>{" "}
+              , eine{" "}
+              <NW>
+                <Icon name='graduation-cap' /> Schule
+              </NW>{" "}
+              oder eine{" "}
+              <NW>
+                <Icon name='cloudscale' /> Luftmessstation
+              </NW>{" "}
+              handelt.
+            </p>
+          ),
+        },
+      }}
+    >
+      <ModalApplicationMenu
+        menuIcon={"bars"}
+        menuTitle={"Filter, Einstellungen und Kompaktanleitung"}
+        menuFooter={<MenuFooter />}
+        menuIntroduction={
+          <span>
+            Benutzen Sie die Auswahlmöglichkeiten unter{" "}
+            <Link
+              className='useAClassNameToRenderProperLink'
+              to='filter'
+              containerId='myMenu'
+              smooth={true}
+              delay={100}
+              onClick={() => setAppMenuActiveMenuSection("filter")}
+            >
+              Filter
+            </Link>
+            , um die in der Karte angezeigten vorbildlichen Luftmessstationen für Stickstoffdioxid
+            (NO₂) auf die für Sie relevanten Stationen zu beschränken. Über{" "}
+            <Link
+              className='useAClassNameToRenderProperLink'
+              to='settings'
+              containerId='myMenu'
+              smooth={true}
+              delay={100}
+              onClick={() => setAppMenuActiveMenuSection("settings")}
+            >
+              Einstellungen
+            </Link>{" "}
+            können Sie die Darstellung der Hintergrundkarte und der Stationen an Ihre Vorlieben
+            anpassen. Wählen Sie die{" "}
+            <Link
+              className='useAClassNameToRenderProperLink'
+              to='help'
+              containerId='myMenu'
+              smooth={true}
+              delay={100}
+              onClick={() => setAppMenuActiveMenuSection("help")}
+            >
+              Kompaktanleitung
+            </Link>{" "}
+            für detailliertere Bedienungsinformationen.
+          </span>
+        }
+        menuSections={[
+          <Section
+            key='filter'
+            sectionKey='filter'
+            sectionTitle={getFilterHeader()}
+            sectionBsStyle='primary'
+            sectionContent={<FilterPanel filterConfiguration={filterConfiguration} />}
+          />,
+          <DefaultSettingsPanel
+            previewMapPosition='lat=51.2607860760692&lng=7.164304562911684&title&zoom=9'
+            previewMapClusteringOptions={undefined}
+            key='settings'
+          />,
+          <Section
+            key='help'
+            sectionKey='help'
+            sectionTitle='Kompaktanleitung'
+            sectionBsStyle='default'
+            sectionContent={<ConfigurableDocBlocks configs={helpConfig} />}
+          />,
+        ]}
+      />
+    </CustomizationContextProvider>
   );
 };
 export default MyMenu;
+const NW = (props) => {
+  return <span style={{ whiteSpace: "nowrap" }}>{props.children}</span>;
+};

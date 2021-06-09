@@ -11611,10 +11611,10 @@ react-chartkick@^0.4.1:
   dependencies:
     chartkick "^3.2.0"
 
-react-cismap@1.2.12:
-  version "1.2.12"
-  resolved "https://registry.yarnpkg.com/react-cismap/-/react-cismap-1.2.12.tgz#5ae1be18eb6e7f7c0f3f712068f8c295b557d299"
-  integrity sha512-k6Vg16Zsqup7nOHsucYUEgqyy/CT+mzD50vRyED83yv/eU6f2SPXed3F6ct/CZOi22QHewzT77Lga7sopluM0g==
+react-cismap@1.2.13:
+  version "1.2.13"
+  resolved "https://registry.yarnpkg.com/react-cismap/-/react-cismap-1.2.13.tgz#ecc450f890bddff424374adda90942897e0ccc4e"
+  integrity sha512-v5QYoXBRf5OcnobDYCAZx8IYMK5sQzEVwboK0tcyFBn5bLTYkukV3Dh3KeZsNeDXZyLNccmXtrEAVk2b7+ynjQ==
   dependencies:
     "@fortawesome/fontawesome-free" "^5.12.0"
     "@fortawesome/fontawesome-svg-core" "^1.2.26"

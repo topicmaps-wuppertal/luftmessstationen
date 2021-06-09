@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 
 import "./App.css";
 import { useState } from "react";
@@ -33,6 +33,7 @@ function App() {
     getGazData(setGazData);
     document.title = "Luftmessstationskarte Wuppertal";
   }, []);
+
   return (
     <TopicMapContextProvider
       appKey='LuftmessstationenWuppertal.TopicMap'

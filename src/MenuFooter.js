@@ -6,7 +6,6 @@ import { Link, scroller } from "react-scroll";
 
 const Footer = () => {
   const { setAppMenuActiveMenuSection } = useContext(UIDispatchContext);
-  console.log("yyy scroller", scroller);
 
   return (
     <div style={{ fontSize: "11px" }}>
