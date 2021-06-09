@@ -65,6 +65,7 @@ function App() {
         locatorControl={true}
         gazData={gazData}
         modalMenu={<MyMenu />}
+        applicationMenuTooltipString={"Filter | Einstellungen | Anleitung"}
         gazetteerSearchPlaceholder='Stadtteil | Adresse | POI'
         infoBox={
           <GenericInfoBoxFromFeature
