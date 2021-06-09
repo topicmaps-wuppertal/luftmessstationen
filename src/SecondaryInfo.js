@@ -110,7 +110,7 @@ const InfoPanel = () => {
       const currentYear = new Date().getFullYear();
 
       for (const year of years) {
-        if (year < currentYear - 11) {
+        if (year < currentYear - 10) {
           delete avgs[year];
         }
       }
