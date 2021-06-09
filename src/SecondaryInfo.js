@@ -277,7 +277,9 @@ const InfoPanel = () => {
               Diese Messstation generierte an {outageCounter}{" "}
               {outageCounter === 1 ? "Monat" : "Monaten"} einen Messausfall. Damit besitzt sie eine
               Zuverlässigkeit von{" "}
-              {Math.round((valueCounter / (valueCounter + outageCounter)) * 1000) / 10}
+              {(
+                Math.round((valueCounter / (valueCounter + outageCounter)) * 1000) / 10
+              ).toLocaleString()}
               %.
             </p>
           )}
@@ -307,7 +309,9 @@ const InfoPanel = () => {
               Diese Messstation generierte an {outageCounter}{" "}
               {outageCounter === 1 ? "Monat" : "Monaten"} einen Messausfall. Damit besitzt sie eine
               Zuverlässigkeit von{" "}
-              {Math.round((valueCounter / (valueCounter + outageCounter)) * 1000) / 10}
+              {(
+                Math.round((valueCounter / (valueCounter + outageCounter)) * 1000) / 10
+              ).toLocaleString()}
               %.
             </p>
           )}
@@ -357,7 +361,9 @@ const InfoPanel = () => {
               Diese Messstation generierte an {outageCounter}{" "}
               {outageCounter === 1 ? "Monat" : "Monaten"} einen Messausfall. Damit besitzt sie eine
               Zuverlässigkeit von{" "}
-              {Math.round((valueCounter / (valueCounter + outageCounter)) * 1000) / 10}
+              {(
+                Math.round((valueCounter / (valueCounter + outageCounter)) * 1000) / 10
+              ).toLocaleString()}
               %.
             </p>
           )}
