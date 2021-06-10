@@ -183,50 +183,128 @@ Datenlieferung treten selten auf. Nach Vorliegen der Daten werden diese seitens 
 Plausibilität geprüft. Die Daten werden spätestens eine Woche nach Erhalt in das Fachsystem übernommen. 
 Es ergibt sich daraus eine maximale Verzögerung hinsichtlich des Zeitpunkts der Veröffentlichung der 
 NO₂-Messwerte von ca. vier Wochen.
-
-Die Daten zu den Luftmessstationen (Passivsammler für NO₂) seit dem Jahr 2006 sind im Open-Data-Angebot 
-der Stadt Wuppertal verfügbar. Diese werden in vier separaten Datenquellen publiziert:
-<ul>
-  <li>
-    <a
-      target='_opendata'
-      href='https://offenedaten-wuppertal.de/dataset/luftmessstationen-wuppertal-passivsammler'
-    >
-      Stammdaten der Luftmessstationen
-    </a>
-  </li>
-  <li>
-    <a
-      target='_opendata'
-      href='https://offenedaten-wuppertal.de/dataset/no2-messdaten-wuppertal-passivsammler-ab-2008'
-    >
-      Messdaten (Monatsmittelwerte) seit dem Jahr 2008
-    </a>
-  </li>
-  <li>
-    <a
-      target='_opendata'
-      href='https://offenedaten-wuppertal.de/dataset/no2-jahresmittelwerte-wuppertal-passivsammler-ab-2008'
-    >
-      Jahresmittelwerte seit dem Jahr 2008
-    </a>
-  </li>
-  <li>
-    <a
-      target='_opendata'
-      href='https://offenedaten-wuppertal.de/dataset/no2-messdaten-wuppertal-passivsammler-2006-und-2007'
-    >
-      Messdaten der Jahre 2006 und 2007
-    </a>
-  </li>
-</ul>
 `,
   };
 
-  const helpConfig = getSimpleHelpForTM(topicMapTitle, simpleHelp, {
-    listWithSymbols4InKartepositionieren: <div>xxx</div>,
-  });
-
+  const titleContent = "Die Karte <b>" + topicMapTitle + "</b>";
+  const helpConfig = [
+    {
+      type: "FAQS",
+      configs: [
+        {
+          title: "Datengrundlage",
+          bsStyle: "secondary",
+          contentBlockConf: {
+            type: "DOCBLOCK",
+            docBlockConfigs: [
+              {
+                type: "HTML",
+                content:
+                  "\n\t\t\t\t\t\t\t\t\t\t" +
+                  titleContent +
+                  " bietet ihnen die folgenden\n\t\t\t\t\t\t\t\t\t\tHintergrundkarten an, die auf verschiedenen Geodatendiensten und Geodaten\n\t\t\t\t\t\t\t\t\t\tbasieren:\n\t\t\t\t\t\t\t\t\t\t",
+              },
+              {
+                type: "HTML",
+                content: `<p><ul><li id="lic_lbk"/><li id="lic_sp"/></ul>
+                  
+                  Neben dem Datensatz der <a href="https://offenedaten-wuppertal.de/dataset/umweltzonen-wuppertal" 
+                  target="_opendata">Umweltzonen Wuppertal</a> stellt die Luftmessstationskarte 
+                  auch die Daten der Luftmessstationen aus dem Open-Data-Angebot der Stadt Wuppertal dar:
+                  <br/> <br/>
+                  <ul>
+                    <li>
+                      <a
+                        target='_opendata'
+                        href='https://offenedaten-wuppertal.de/dataset/luftmessstationen-wuppertal-passivsammler'
+                      >
+                        Stammdaten der Luftmessstationen
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        target='_opendata'
+                        href='https://offenedaten-wuppertal.de/dataset/no2-messdaten-wuppertal-passivsammler-ab-2008'
+                      >
+                        Messdaten (Monatsmittelwerte) seit dem Jahr 2008
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        target='_opendata'
+                        href='https://offenedaten-wuppertal.de/dataset/no2-jahresmittelwerte-wuppertal-passivsammler-ab-2008'
+                      >
+                        Jahresmittelwerte seit dem Jahr 2008
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        target='_opendata'
+                        href='https://offenedaten-wuppertal.de/dataset/no2-messdaten-wuppertal-passivsammler-2006-und-2007'
+                      >
+                        Messdaten der Jahre 2006 und 2007
+                      </a>
+                    </li>
+                  </ul>
+                  </p>`,
+                replaceConfig: {
+                  lic_lbk: {
+                    type: "LICENSE_LBK",
+                  },
+                  lic_sp: {
+                    type: "LICENSE_STADTPLAN",
+                  },
+                },
+              },
+            ],
+          },
+        },
+        {
+          title: "Hintergrund",
+          bsStyle: "secondary",
+          contentBlockConf: {
+            type: simpleHelp.type || "MARKDOWN",
+            content: simpleHelp.content,
+          },
+        },
+        {
+          title: "Fachobjekte auswählen und abfragen",
+          bsStyle: "success",
+          contentBlockConf: {
+            type: "FACHOBJEKTEAUSWAEHLENUNDABFRAGEN",
+          },
+        },
+        {
+          title: "Kartendarstellung der Fachobjekte",
+          bsStyle: "success",
+          contentBlockConf: {
+            type: "KARTENDARSTELLUNGDERFACHOBJEKTE",
+          },
+        },
+        {
+          title: "In Karte positionieren",
+          bsStyle: "warning",
+          contentBlockConf: {
+            type: "INKARTEPOSITIONIEREN",
+          },
+        },
+        {
+          title: "Mein Standort",
+          bsStyle: "warning",
+          contentBlockConf: {
+            type: "MEINSTANDORT",
+          },
+        },
+        {
+          title: "Einstellungen",
+          bsStyle: "info",
+          contentBlockConf: {
+            type: "EINSTELLUNGEN",
+          },
+        },
+      ],
+    },
+  ];
   return (
     <CustomizationContextProvider
       customizations={{
