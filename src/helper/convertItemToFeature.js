@@ -28,8 +28,6 @@ const getLastMeasurement = (item) => {
       }
       months.sort();
       const last = months.pop();
-      console.log("xxx months", months);
-      console.log("xxx last", last);
 
       return { value: lymValues[last - 1], monthIndex: last - 1, year };
     }
@@ -179,8 +177,6 @@ const getTitle = (item) => {
 };
 
 const convertItemToFeature = async (itemIn) => {
-  console.log("xxx  convertItemToFeature itemIn", itemIn);
-
   let clonedItem = JSON.parse(JSON.stringify(itemIn));
   let rawWerte = clonedItem.werte;
   let newWerte = {};
@@ -191,17 +187,11 @@ const convertItemToFeature = async (itemIn) => {
     }
   }
 
-  console.log("new werte", newWerte);
-
   clonedItem.werte = newWerte;
-  console.log("clonedItem", clonedItem);
 
   let item = await addSVGToProps(clonedItem, (i) => "luft/" + getSignature(i));
 
   item.status = getStatus(item);
-  if (item.status !== "abgebaut") {
-    console.log("status", item.status);
-  }
 
   const text =
     item?.strasse +
