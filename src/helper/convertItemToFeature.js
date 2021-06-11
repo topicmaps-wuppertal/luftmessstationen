@@ -14,10 +14,24 @@ const getLastMeasurement = (item) => {
 
   if (lym) {
     const { values: lymValues, year } = lym;
-    if (lymValues.length === 13) {
-      return { value: lymValues[11], monthIndex: 11, year };
+    if (Array.isArray(lymValues)) {
+      if (lymValues.length === 13) {
+        return { value: lymValues[11], monthIndex: 11, year };
+      } else {
+        return { value: lymValues[lymValues.length - 1], monthIndex: lymValues.length - 1, year };
+      }
     } else {
-      return { value: lymValues[lymValues.length - 1], monthIndex: lymValues.length - 1, year };
+      const monthsIndices = Object.keys(lymValues);
+      const months = [];
+      for (const m of monthsIndices) {
+        months.push(parseInt(m));
+      }
+      months.sort();
+      const last = months.pop();
+      console.log("xxx months", months);
+      console.log("xxx last", last);
+
+      return { value: lymValues[last - 1], monthIndex: last - 1, year };
     }
   }
 };
@@ -165,10 +179,30 @@ const getTitle = (item) => {
 };
 
 const convertItemToFeature = async (itemIn) => {
-  //   console.log("itemIn", itemIn);
+  console.log("xxx  convertItemToFeature itemIn", itemIn);
 
-  let item = await addSVGToProps(itemIn, (i) => "luft/" + getSignature(i));
+  let clonedItem = JSON.parse(JSON.stringify(itemIn));
+  let rawWerte = clonedItem.werte;
+  let newWerte = {};
+  for (const year of Object.keys(rawWerte)) {
+    newWerte[year] = [];
+    for (const monthIndex of Object.keys(rawWerte[year])) {
+      newWerte[year][parseInt(monthIndex - 1)] = rawWerte[year][monthIndex];
+    }
+  }
+
+  console.log("new werte", newWerte);
+
+  clonedItem.werte = newWerte;
+  console.log("clonedItem", clonedItem);
+
+  let item = await addSVGToProps(clonedItem, (i) => "luft/" + getSignature(i));
+
   item.status = getStatus(item);
+  if (item.status !== "abgebaut") {
+    console.log("status", item.status);
+  }
+
   const text =
     item?.strasse +
     " " +

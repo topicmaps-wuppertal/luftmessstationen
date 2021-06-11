@@ -37,8 +37,8 @@ function App() {
   return (
     <TopicMapContextProvider
       appKey='LuftmessstationenWuppertal.TopicMap'
-      featureItemsURL={"https://wupp-topicmaps-data.cismet.de/data/no2.data.json"}
-      // featureItemsURL={"/data/no2.data.json"} //for dev purpose only
+      // featureItemsURL={"https://wupp-topicmaps-data.cismet.de/data/no2.data.json"}
+      featureItemsURL={"/data/no2.data.json"} //for dev purpose only
       referenceSystemDefinition={MappingConstants.proj4crs25832def}
       getFeatureStyler={getGTMFeatureStyler}
       featureTooltipFunction={(feature) => feature?.text}
@@ -114,7 +114,7 @@ function App() {
           }}
         />
         <FeatureCollection></FeatureCollection>
-        {/* <LogSelection /> */}
+        <LogSelection />
       </TopicMapComponent>
     </TopicMapContextProvider>
   );

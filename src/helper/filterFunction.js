@@ -2,7 +2,9 @@ import { getStatus } from "./convertItemToFeature";
 
 const itemFilterFunction = ({ filterState }) => {
   return (item) => {
-    return filterState?.stations?.includes(getStatus(item));
+    const filterStateStations = filterState?.stations;
+    const status = getStatus(item);
+    return filterStateStations.includes(status);
   };
 };
 export default itemFilterFunction;
