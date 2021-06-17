@@ -9,6 +9,13 @@ const hasValues = (item) => {
   return values !== undefined && JSON.stringify(values) !== "{}";
 };
 
+const convertWerteObjectToArray = (jahreswerte) => {
+  const retArr = [];
+  for (const monthIndex of Object.keys(jahreswerte)) {
+    retArr[parseInt(monthIndex - 1)] = jahreswerte[monthIndex];
+  }
+};
+
 const getLastMeasurement = (item) => {
   const lym = getLastYearMeasurements(item);
 
@@ -29,7 +36,7 @@ const getLastMeasurement = (item) => {
       months.sort();
       const last = months.pop();
 
-      return { value: lymValues[last - 1], monthIndex: last - 1, year };
+      return { value: lymValues[last], monthIndex: last, year };
     }
   }
 };
@@ -52,6 +59,7 @@ const getLastYearM1 = (item) => {
 
 export const getLastYearMeasurements = (item) => {
   const ly = getLastYear(item);
+
   const values = item?.werte;
   if (ly) {
     return { values: values[ly], year: ly };
@@ -80,8 +88,9 @@ const getActivityStatus = (item) => {
 export const getStatus = (item) => {
   if (getActivityStatus(item) === "aktiv") {
     const lym = getLastMeasurement(item)?.value;
+    const status = getStatus4Value(lym);
 
-    return getStatus4Value(lym);
+    return status;
   } else {
     return getActivityStatus(item);
   }
