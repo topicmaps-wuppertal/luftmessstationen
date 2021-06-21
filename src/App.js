@@ -25,10 +25,9 @@ import { getGazData } from "./helper/getGazData";
 import titleFactory from "./helper/titleFactory";
 import InfoPanel from "./SecondaryInfo";
 import { MappingConstants } from "react-cismap";
-
+import Luftmessstationskarte from "./Luftmessstationskarte";
 function App() {
   const [gazData, setGazData] = useState([]);
-
   useEffect(() => {
     getGazData(setGazData);
     document.title = "Luftmessstationskarte Wuppertal";
@@ -61,61 +60,7 @@ function App() {
       classKeyFunction={(item) => LOOKUP[getStatus(item)].title}
       getColorFromProperties={(item) => LOOKUP[getStatus(item)].color}
     >
-      <TopicMapComponent
-        locatorControl={true}
-        gazData={gazData}
-        modalMenu={<MyMenu />}
-        applicationMenuTooltipString={"Filter | Einstellungen | Anleitung"}
-        gazetteerSearchPlaceholder='Stadtteil | Adresse | POI'
-        infoBox={
-          <GenericInfoBoxFromFeature
-            pixelwidth={350}
-            config={{
-              displaySecondaryInfoAction: true,
-
-              city: "Wuppertal",
-              navigator: {
-                noun: {
-                  singular: "Messstation",
-                  plural: "Messstationen",
-                },
-              },
-              noCurrentFeatureTitle: "Keine Messtationen gefunden",
-              noCurrentFeatureContent: "",
-            }}
-          />
-        }
-        secondaryInfo={<InfoPanel />}
-      >
-        <ContactButton
-          title='Rückfrage zu den Messwerten'
-          action={() => {
-            let link = document.createElement("a");
-            link.setAttribute("type", "hidden");
-            const br = "\n";
-
-            let mailToHref =
-              "mailto:luftreinhaltung@stadt.wuppertal.de?subject=Rückfrage zu Messwerten&body=" +
-              encodeURI(`Sehr geehrte Damen und Herren,${br}${br} zu der Luftmessstationskarte `) +
-              encodeURI(`auf${br}${br}`) +
-              `${window.location.href.replace(/&/g, "%26").replace(/#/g, "%23")}` +
-              encodeURI(
-                `${br}` +
-                  `${br}` +
-                  `habe ich folgende Frage:${br}` +
-                  `${br}${br}${br}${br}` +
-                  `Mit freundlichen Grüßen${br}` +
-                  `${br}` +
-                  `${br}`
-              );
-            document.body.appendChild(link);
-            link.href = mailToHref;
-            link.click();
-          }}
-        />
-        <FeatureCollection></FeatureCollection>
-        {/* <LogSelection /> */}
-      </TopicMapComponent>
+      <Luftmessstationskarte />
     </TopicMapContextProvider>
   );
 }
