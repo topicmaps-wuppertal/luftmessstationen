@@ -49,10 +49,7 @@ function Comp() {
       secondaryInfo={<InfoPanel />}
       gazetteerHitTrigger={(hits) => {
         if (Array.isArray(hits) && hits[0]?.more?.mid) {
-          console.log("xxx HIT", hits[0]?.more?.mid);
           setSelectedFeatureByPredicate((feature) => feature.properties.id === hits[0].more.mid);
-
-          setTimeout(() => {}, 1);
         }
       }}
     >
