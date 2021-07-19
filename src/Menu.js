@@ -317,7 +317,7 @@ NO₂-Messwerte von ca. vier Wochen.
                   denen es sich um abmontierte Stationen handelt (ggf. werden in der Vergangenheit
                   erfasste Messwerte im Datenblatt präsentiert). Die Unterteilung (Klassifizierung)
                   der Stationen in der Optionsgruppe &quot;<strong>aktive Messstationen</strong>
-                  &quot; wird anhand des NO₂-Messwertes vorgenommen: unauffällig grün (≦ 35 mg/m³),
+                  &quot; wird anhand des NO₂-Messwertes vorgenommen: unauffällig grün (≦ 35 µg/m³),
                   auffällig gelb (&gt; 35 µg/m³), warnend rot (&gt; 40 µg/m³); temporärer Ausfall
                   türkis (siehe auch Abschnitt{" "}
                   <Link
