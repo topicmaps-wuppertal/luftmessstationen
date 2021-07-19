@@ -296,6 +296,54 @@ NO₂-Messwerte von ca. vier Wochen.
           },
         },
         {
+          title: "Filtern",
+          bsStyle: "warning",
+          contentBlockConf: {
+            type: "REACTCOMP",
+            content: (
+              <div>
+                <p>
+                  Im Bereich &quot;<strong>Filter</strong>&quot; können Sie im Anwendungsmenü{" "}
+                  <Icon name='bars' /> die in der Karte angezeigten Luftmessstationen so ausdünnen,
+                  dass nur die für Sie interessanten Stationen übrig bleiben. Standardmäßig sind die
+                  Einstellungen hier so gesetzt, dass alle verfügbaren Luftmessstationen angezeigt
+                  werden.
+                </p>
+                <p>
+                  Mit den Optionsgruppen &quot;<strong>aktive Messstationen</strong>&quot; und
+                  &quot;<strong>inaktive Messstationen</strong>&quot; können Sie die Kartenanzeige
+                  auf Luftmessstationen beschränken, die im letzten verfügbaren Messzeitraum
+                  NO₂-Messwerte lieferten (ggf. kann ein temporärer Messausfall vorliegen) oder bei
+                  denen es sich um abmontierte Stationen handelt (ggf. werden in der Vergangenheit
+                  erfasste Messwerte im Datenblatt präsentiert). Die Unterteilung (Klassifizierung)
+                  der Stationen in der Optionsgruppe &quot;<strong>aktive Messstationen</strong>
+                  &quot; wird anhand des NO₂-Messwertes vorgenommen: unauffällig grün (≦ 35 mg/m³),
+                  auffällig gelb (&gt; 35 µg/m³), warnend rot (&gt; 40 µg/m³); temporärer Ausfall
+                  türkis (siehe auch Abschnitt{" "}
+                  <Link
+                    to={"Hintergrund"}
+                    containerId={"myMenu"}
+                    style={{ cursor: "pointer", color: "#4688F7" }}
+                  >
+                    Hintergrund
+                  </Link>
+                  ) .
+                </p>
+                <p>
+                  Ihre Einstellungen werden direkt in der blauen Titelzeile des Bereichs &quot;
+                  <strong>Filter</strong>&quot; und in dem Donut-Diagramm, das Sie rechts neben oder
+                  unter den Filteroptionen finden, ausgewertet. Die Titelzeile zeigt die
+                  Gesamtanzahl der Luftmessstationen, die den von Ihnen gesetzten Filterbedingungen
+                  entsprechen. Das Donut-Diagramm zeigt zusätzlich die Verteilung der
+                  klassifizierten Luftmessstationen (unauffällige, auffällige, warnende Stationen;
+                  Stationen mit Messausfall; abmontierte Stationen). Bewegen Sie dazu den Mauszeiger
+                  auf eines der farbigen Segmente des Diagramms.
+                </p>
+              </div>
+            ),
+          },
+        },
+        {
           title: "Einstellungen",
           bsStyle: "info",
           contentBlockConf: {
