@@ -39,6 +39,8 @@ function App() {
       featureItemsURL={"https://wupp-topicmaps-data.cismet.de/data/no2.data.json"}
       // featureItemsURL={"/data/no2.data.json"} //for dev purpose only
       referenceSystemDefinition={MappingConstants.proj4crs25832def}
+      mapEPSGCode='25832'
+      referenceSystem={MappingConstants.crs25832}
       getFeatureStyler={getGTMFeatureStyler}
       featureTooltipFunction={(feature) => feature?.text}
       convertItemToFeature={convertItemToFeature}

@@ -3,7 +3,10 @@ import "leaflet/dist/leaflet.css";
 import React, { useContext, useEffect, useState } from "react";
 import "react-bootstrap-typeahead/css/Typeahead.css";
 import ContactButton from "react-cismap/ContactButton";
-import { FeatureCollectionDispatchContext } from "react-cismap/contexts/FeatureCollectionContextProvider";
+import {
+  FeatureCollectionContext,
+  FeatureCollectionDispatchContext,
+} from "react-cismap/contexts/FeatureCollectionContextProvider";
 import FeatureCollection from "react-cismap/FeatureCollection";
 import "react-cismap/topicMaps.css";
 import GenericInfoBoxFromFeature from "react-cismap/topicmaps/GenericInfoBoxFromFeature";
@@ -16,6 +19,12 @@ import InfoPanel from "./SecondaryInfo";
 function Comp() {
   const [gazData, setGazData] = useState([]);
   const { setSelectedFeatureByPredicate } = useContext(FeatureCollectionDispatchContext);
+  // const { items, filteredItems, allFeatures } = useContext(FeatureCollectionContext);
+
+  // console.log("items", items);
+  // console.log("filteredItems", filteredItems);
+  // console.log("allFeatures", allFeatures);
+
   useEffect(() => {
     getGazData(setGazData);
     document.title = "Luftmessstationskarte Wuppertal";
