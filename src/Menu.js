@@ -303,11 +303,11 @@ NO₂-Messwerte von ca. vier Wochen.
             content: (
               <div>
                 <p>
-                  Im Bereich &quot;<strong>Filter</strong>&quot; können Sie im Anwendungsmenü{" "}
-                  <Icon name='bars' /> die in der Karte angezeigten Luftmessstationen so ausdünnen,
-                  dass nur die für Sie interessanten Stationen übrig bleiben. Standardmäßig sind die
-                  Einstellungen hier so gesetzt, dass alle verfügbaren Luftmessstationen angezeigt
-                  werden.
+                  Im Bereich &quot;<strong>Messstationen der Luftqualität</strong>&quot; können Sie
+                  im Anwendungsmenü <Icon name='bars' /> die in der Karte angezeigten
+                  Luftmessstationen so ausdünnen, dass nur die für Sie interessanten Stationen übrig
+                  bleiben. Standardmäßig sind die Einstellungen hier so gesetzt, dass alle
+                  verfügbaren Luftmessstationen angezeigt werden.
                 </p>
                 <p>
                   Mit den Optionsgruppen &quot;<strong>aktive Messstationen</strong>&quot; und
@@ -331,13 +331,13 @@ NO₂-Messwerte von ca. vier Wochen.
                 </p>
                 <p>
                   Ihre Einstellungen werden direkt in der blauen Titelzeile des Bereichs &quot;
-                  <strong>Filter</strong>&quot; und in dem Donut-Diagramm, das Sie rechts neben oder
-                  unter den Filteroptionen finden, ausgewertet. Die Titelzeile zeigt die
-                  Gesamtanzahl der Luftmessstationen, die den von Ihnen gesetzten Filterbedingungen
-                  entsprechen. Das Donut-Diagramm zeigt zusätzlich die Verteilung der
-                  klassifizierten Luftmessstationen (unauffällige, auffällige, warnende Stationen;
-                  Stationen mit Messausfall; abmontierte Stationen). Bewegen Sie dazu den Mauszeiger
-                  auf eines der farbigen Segmente des Diagramms.
+                  <strong>Messstationen der Luftqualität</strong>&quot; und in dem Donut-Diagramm,
+                  das Sie rechts neben oder unter den Filteroptionen finden, ausgewertet. Die
+                  Titelzeile zeigt die Gesamtanzahl der Luftmessstationen, die den von Ihnen
+                  gesetzten Filterbedingungen entsprechen. Das Donut-Diagramm zeigt zusätzlich die
+                  Verteilung der klassifizierten Luftmessstationen (unauffällige, auffällige,
+                  warnende Stationen; Stationen mit Messausfall; abmontierte Stationen). Bewegen Sie
+                  dazu den Mauszeiger auf eines der farbigen Segmente des Diagramms.
                 </p>
               </div>
             ),
@@ -417,10 +417,10 @@ NO₂-Messwerte von ca. vier Wochen.
               delay={100}
               onClick={() => setAppMenuActiveMenuSection("filter")}
             >
-              Filter
+              Messstationen der Luftqualität
             </Link>
-            , um die in der Karte angezeigten vorbildlichen Luftmessstationen für Stickstoffdioxid
-            (NO₂) auf die für Sie relevanten Stationen zu beschränken. Über{" "}
+            , um die in der Karte angezeigten Luftmessstationen für Stickstoffdioxid (NO₂) auf die
+            für Sie relevanten Stationen zu beschränken. Über{" "}
             <Link
               className='useAClassNameToRenderProperLink'
               to='settings'
