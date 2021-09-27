@@ -5,12 +5,13 @@ const factory = ({ featureCollectionContext }) => {
     return result?.thema?.name;
   };
   console.log("featureCollectionContext?.filterState?", featureCollectionContext?.filterState);
-
+  const stationsArten = [...featureCollectionContext?.filterState?.stations];
   let filterDescription = "?";
-  if (featureCollectionContext?.filteredItems?.length === featureCollectionContext?.items?.length) {
+  if (stationsArten.length === 5) {
     filterDescription = undefined;
+  } else if (featureCollectionContext?.filteredItems?.length === 0) {
+    filterDescription = `die Filterung liefert keine Messstationen`;
   } else {
-    const stationsArten = [...featureCollectionContext?.filterState?.stations];
     stationsArten.sort();
 
     stationsArten.sort((a, b) => {
@@ -36,6 +37,8 @@ const factory = ({ featureCollectionContext }) => {
       filterDescription = `nur ${LOOKUP[stationsArten[0]].filterTitle} Messstationen`;
     } else if (stationsArten.length === 1) {
       filterDescription = `nur ${LOOKUP[stationsArten[0]].filterTitle}`;
+    } else if (stationsArten.length === 0) {
+      filterDescription = `die Filterung liefert keine Messstationen`;
     } else {
       const parts = [];
       for (const art of stationsArten) {
