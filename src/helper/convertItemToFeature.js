@@ -103,26 +103,12 @@ export const getStatus4Value = (value) => {
     return "auffaellig";
   } else if (value > 40) {
     return "warnend";
-  } else if (value === 9999) {
+  } else if (value === -9999) {
     return "inaktiv";
   } else {
     return "unknown";
   }
 };
-
-// export const getStatus4Value = (value) => {
-//   if (value > 0 && value <= 28) {
-//     return "unauffaellig";
-//   } else if (value > 28 && value <= 33) {
-//     return "auffaellig";
-//   } else if (value > 33) {
-//     return "warnend";
-//   } else if (value === 9999) {
-//     return "inaktiv";
-//   } else {
-//     return "unknown";
-//   }
-// };
 
 const getSignature = (item) => {
   const status = getStatus(item);
@@ -168,7 +154,7 @@ const getTitle = (item) => {
     } ${demontage.getFullYear()} abmontiert.`;
   } else {
     if (lm) {
-      if (lm.value !== 9999) {
+      if (lm.value !== -9999) {
         return lm.value + " µg/m³ (" + MONTHS[lm.monthIndex].name + " " + lm.year + ")";
       } else {
         return (
@@ -176,7 +162,7 @@ const getTitle = (item) => {
           MONTHS[lm.monthIndex].name +
           " " +
           lm.year +
-          "liefert diese Messstation keinen Messwert"
+          " liefert diese Messstation keinen Messwert"
         );
       }
     } else {
