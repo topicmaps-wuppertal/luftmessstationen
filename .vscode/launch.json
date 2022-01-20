@@ -17,6 +17,13 @@
       "name": "Friedrich-Engels-Allee 308",
       "url": "http://localhost:3000/#/?lat=51.26496630932143&lng=7.183723605695018&zoom=14",
       "webRoot": "${workspaceFolder}"
+    },
+    {
+      "type": "pwa-chrome",
+      "request": "launch",
+      "name": "Ganz Wupp",
+      "url": "http://localhost:3000/#/?lat=51.25758609434202&lng=7.1600877300716625&zoom=9",
+      "webRoot": "${workspaceFolder}"
     }
   ]
 }

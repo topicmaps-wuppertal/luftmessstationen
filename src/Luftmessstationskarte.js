@@ -12,6 +12,7 @@ import "react-cismap/topicMaps.css";
 import GenericInfoBoxFromFeature from "react-cismap/topicmaps/GenericInfoBoxFromFeature";
 import TopicMapComponent from "react-cismap/topicmaps/TopicMapComponent";
 import "./App.css";
+import { getStatus } from "./helper/convertItemToFeature";
 import { getGazData } from "./helper/getGazData";
 import MyMenu from "./Menu";
 import InfoPanel from "./SecondaryInfo";
@@ -21,8 +22,6 @@ function Comp() {
   const { setSelectedFeatureByPredicate } = useContext(FeatureCollectionDispatchContext);
   // const { items, filteredItems, allFeatures } = useContext(FeatureCollectionContext);
 
-  // console.log("items", items);
-  // console.log("filteredItems", filteredItems);
   // console.log("allFeatures", allFeatures);
 
   useEffect(() => {

@@ -33,7 +33,9 @@ const getLastMeasurement = (item) => {
       for (const m of monthsIndices) {
         months.push(parseInt(m));
       }
-      months.sort();
+      months.sort(function (a, b) {
+        return a - b;
+      });
       const last = months.pop();
 
       return { value: lymValues[last], monthIndex: last, year };
@@ -117,6 +119,7 @@ const getSignature = (item) => {
 
 const getAdditionalInfo = (item) => {
   const allAvgYears = Object.keys(item?.mittelwerte);
+
   allAvgYears.sort();
   const last2Years = allAvgYears.slice(-2);
 
@@ -185,7 +188,6 @@ const convertItemToFeature = async (itemIn) => {
   clonedItem.werte = newWerte;
 
   let item = await addSVGToProps(clonedItem, (i) => "luft/" + getSignature(i));
-
   item.status = getStatus(item);
 
   const text =
@@ -198,6 +200,7 @@ const convertItemToFeature = async (itemIn) => {
   const selected = false;
   const geometry = item?.geojson;
   item.color = LOOKUP[item.status].color;
+
   const info = {
     header: LOOKUP[item.status].header,
     title: getTitle(item),
