@@ -1,29 +1,29 @@
 {
   "files": {
     "main.css": "./static/css/main.8c8b27cf.chunk.css",
-    "main.js": "./static/js/main.e0f06729.chunk.js",
-    "main.js.map": "./static/js/main.e0f06729.chunk.js.map",
-    "runtime-main.js": "./static/js/runtime-main.8130b566.js",
-    "runtime-main.js.map": "./static/js/runtime-main.8130b566.js.map",
-    "static/css/2.07a5bae8.chunk.css": "./static/css/2.07a5bae8.chunk.css",
-    "static/js/2.1b217267.chunk.js": "./static/js/2.1b217267.chunk.js",
-    "static/js/2.1b217267.chunk.js.map": "./static/js/2.1b217267.chunk.js.map",
-    "static/js/3.de81cf02.chunk.js": "./static/js/3.de81cf02.chunk.js",
-    "static/js/3.de81cf02.chunk.js.map": "./static/js/3.de81cf02.chunk.js.map",
+    "main.js": "./static/js/main.1c0f9c9d.chunk.js",
+    "main.js.map": "./static/js/main.1c0f9c9d.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.513f7a31.js",
+    "runtime-main.js.map": "./static/js/runtime-main.513f7a31.js.map",
+    "static/css/2.cf825cb5.chunk.css": "./static/css/2.cf825cb5.chunk.css",
+    "static/js/2.ff4ec27a.chunk.js": "./static/js/2.ff4ec27a.chunk.js",
+    "static/js/2.ff4ec27a.chunk.js.map": "./static/js/2.ff4ec27a.chunk.js.map",
+    "static/js/3.32f8ae36.chunk.js": "./static/js/3.32f8ae36.chunk.js",
+    "static/js/3.32f8ae36.chunk.js.map": "./static/js/3.32f8ae36.chunk.js.map",
     "index.html": "./index.html",
-    "static/css/2.07a5bae8.chunk.css.map": "./static/css/2.07a5bae8.chunk.css.map",
+    "static/css/2.cf825cb5.chunk.css.map": "./static/css/2.cf825cb5.chunk.css.map",
     "static/css/main.8c8b27cf.chunk.css.map": "./static/css/main.8c8b27cf.chunk.css.map",
-    "static/js/2.1b217267.chunk.js.LICENSE.txt": "./static/js/2.1b217267.chunk.js.LICENSE.txt",
+    "static/js/2.ff4ec27a.chunk.js.LICENSE.txt": "./static/js/2.ff4ec27a.chunk.js.LICENSE.txt",
     "static/media/MeinStandpunktMarker.aec65d22.jpg": "./static/media/MeinStandpunktMarker.aec65d22.jpg",
     "static/media/MeinStandpunktMarkerDoppel.e4a85271.jpg": "./static/media/MeinStandpunktMarkerDoppel.e4a85271.jpg",
     "static/media/font-awesome.css": "./static/media/fontawesome-webfont.f691f37e.woff",
     "static/media/leaflet.extra-markers.min.css": "./static/media/markers_default@2x.9593b3c7.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.8130b566.js",
-    "static/css/2.07a5bae8.chunk.css",
-    "static/js/2.1b217267.chunk.js",
+    "static/js/runtime-main.513f7a31.js",
+    "static/css/2.cf825cb5.chunk.css",
+    "static/js/2.ff4ec27a.chunk.js",
     "static/css/main.8c8b27cf.chunk.css",
-    "static/js/main.e0f06729.chunk.js"
+    "static/js/main.1c0f9c9d.chunk.js"
   ]
 }
